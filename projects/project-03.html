@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Бренд- и спецпроекты — Леонид Остапчук</title>
+  <link rel="icon" type="image/webp" href="../assets/media/favicon.webp">
+  <script>document.documentElement.classList.add("fonts-loading");</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090909;
+      --paper: #101010;
+      --text: #f5f5f2;
+      --muted: #aaa9a3;
+      --line: rgba(255, 255, 255, 0.14);
+      --soft: #171717;
+      --accent: #6fb7ff;
+      --shadow: 0 18px 44px rgba(0, 0, 0, 0.35);
+      --font-body: "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-display: "Archivo", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-label: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    * { box-sizing: border-box; }
+
+    html.fonts-loading body { opacity: 0; }
+
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      opacity: 1;
+      transition: opacity 0.12s ease;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(980px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 48px 0 72px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    [id] {
+      scroll-margin-top: 24px;
+    }
+
+    .page-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+
+    .page-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 12px 24px;
+      margin: 0 0 0 auto;
+      width: fit-content;
+      max-width: 100%;
+    }
+
+    .page-nav a {
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      font-size: 14px;
+      line-height: 1;
+      text-decoration: none;
+      transition: color 0.2s ease;
+      font-family: var(--font-label);
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .page-nav a:hover {
+      color: var(--accent);
+    }
+
+
+    .back,
+    .section-kicker {
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      font-size: 14px;
+      line-height: 1;
+      font-family: var(--font-label);
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .back:hover { color: var(--accent); }
+
+    .page-topbar .back,
+    .page-topbar .page-nav a {
+      font-size: 15px;
+      line-height: 1.2;
+      font-weight: 400;
+    }
+
+    .chip,
+    .tag {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 10px;
+      background: var(--soft);
+      color: var(--muted);
+      font-size: 13px;
+      font-family: var(--font-body);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    .chip { margin-top: 18px; }
+
+    h1 {
+      margin: 0 0 20px;
+      font-size: clamp(36px, 6vw, 58px);
+      line-height: 0.92;
+      letter-spacing: 0.022em;
+      text-wrap: balance;
+      font-family: var(--font-display);
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 22px;
+      letter-spacing: -0.025em;
+      text-wrap: balance;
+      font-family: var(--font-body);
+      font-weight: 700;
+    }
+
+    .subtitle,
+    p {
+      color: var(--muted);
+    }
+
+    .subtitle {
+      max-width: 760px;
+      font-size: 16px;
+      margin: 0;
+      text-wrap: pretty;
+    }
+
+    .page > .subtitle,
+    .hero-card {
+      display: none;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--line);
+      margin: 36px 0;
+    }
+
+    .section-block + .section-block {
+      margin-top: 40px;
+      padding-top: 40px;
+      border-top: 1px solid var(--line);
+    }
+
+    .divider + .section-block {
+      margin-top: 40px;
+    }
+
+    .section-block.no-divider + .section-block.no-divider,
+    .section-block.no-divider + .section-block {
+      margin-top: 40px;
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 180px minmax(0, 1fr);
+      gap: 28px;
+      align-items: start;
+      margin-bottom: 24px;
+    }
+
+    .section-head p {
+      margin: 0;
+    }
+
+    .section-kicker {
+      padding-top: 4px;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0;
+      align-items: start;
+      margin-top: 28px;
+    }
+
+    .grid-2x2,
+    .grid-1x2 {
+      display: grid;
+      gap: 16px;
+      margin-top: 0;
+    }
+
+    .grid-2x2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid-1x2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .wide-card {
+      margin-top: 0;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--soft);
+      overflow: hidden;
+      aspect-ratio: 15 / 8;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .merch-card {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--soft);
+      overflow: hidden;
+      aspect-ratio: 15 / 16;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+      .mascot-card {
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: var(--soft);
+        overflow: hidden;
+        aspect-ratio: 1920 / 1226;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+        .mascot-showcase {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 18px;
+          margin-top: 0;
+          padding: 22px;
+          border: 1px solid var(--line);
+          border-radius: 24px;
+        background: var(--bg);
+      }
+
+      .mascot-option {
+        display: grid;
+        gap: 10px;
+      }
+
+      .mascot-caption {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.45;
+        font-weight: 400;
+      }
+
+    .merch-trigger {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      padding: 0;
+      margin: 0;
+      background: transparent;
+      display: grid;
+      place-items: center;
+      cursor: zoom-in;
+    }
+
+    .merch-image {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+    }
+
+    .wide-card:hover,
+    .merch-card:hover,
+    .mascot-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(55, 53, 47, 0.08);
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
+      background: rgba(17, 24, 39, 0.9);
+      z-index: 1000;
+    }
+
+    .lightbox.is-open {
+      display: flex;
+    }
+
+    .lightbox-backdrop {
+      position: absolute;
+      inset: 0;
+    }
+
+    .lightbox-frame {
+      position: relative;
+      z-index: 1;
+      width: min(1400px, calc(100vw - 96px));
+      max-height: calc(100vh - 96px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-media {
+      max-width: 100%;
+      max-height: calc(100vh - 96px);
+      display: block;
+      border-radius: 18px;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+      background: var(--paper);
+    }
+
+    .lightbox-control {
+      position: absolute;
+      z-index: 2;
+      border: 0;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+    }
+
+    .lightbox-close {
+      top: 20px;
+      right: 20px;
+      position: fixed;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    .lightbox-prev { left: 24px; }
+    .lightbox-next { right: 24px; }
+
+    .lightbox-prev,
+    .lightbox-next {
+      top: 50%;
+      transform: translateY(-50%);
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    @media (max-width: 1000px) {
+      .grid-2x2,
+      .grid-1x2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+      @media (max-width: 720px) {
+
+      .scroll-top,
+      .floating-back {
+        right: 14px;
+        bottom: 14px;
+        width: 42px;
+        height: 42px;
+      }
+
+      .floating-back {
+        left: 14px;
+        top: 14px;
+        right: auto;
+        bottom: auto;
+      }
+
+      .page {
+        width: min(100% - 24px, 980px);
+        padding: 24px 0 56px;
+      }
+
+      .section-head,
+      .intro-grid {
+        grid-template-columns: 1fr;
+      }
+
+        .grid-2x2,
+        .grid-1x2 {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 12px;
+        }
+
+      .mascot-showcase {
+        gap: 12px;
+        padding: 14px;
+        border-radius: 18px;
+      }
+
+      .mascot-option {
+        gap: 8px;
+      }
+
+      .mascot-caption {
+        font-size: 12px;
+        line-height: 1.35;
+      }
+
+        .hero-card,
+        .merch-card {
+          border-radius: 14px;
+        }
+
+      .lightbox {
+        padding: 16px;
+      }
+
+      .lightbox-frame {
+        width: min(100vw - 32px, 1400px);
+        max-height: calc(100vh - 32px);
+      }
+
+      .lightbox-media {
+        max-height: calc(100vh - 32px);
+      }
+
+      .lightbox-prev { left: 8px; }
+      .lightbox-next { right: 8px; }
+
+        .lightbox-close,
+        .lightbox-prev,
+        .lightbox-next {
+          width: 44px;
+          height: 44px;
+        }
+    }
+
+    @media (max-width: 560px) {
+      .mascot-showcase {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        padding: 10px;
+        border-radius: 16px;
+      }
+
+      .mascot-card {
+        border-radius: 14px;
+      }
+
+      .mascot-option {
+        gap: 6px;
+      }
+
+      .mascot-caption {
+        font-size: 11px;
+        line-height: 1.3;
+      }
+    }
+  
+    .scroll-top,
+    .floating-back {
+      position: fixed;
+      width: 46px;
+      height: 46px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(20, 20, 20, 0.88);
+      color: var(--text);
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 0 12px 24px rgba(55, 53, 47, 0.08);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      z-index: 999;
+    }
+
+    .scroll-top {
+      right: 20px;
+      bottom: 20px;
+    }
+
+    .floating-back {
+      left: 20px;
+      top: 20px;
+    }
+
+    .scroll-top.visible,
+    .floating-back.visible {
+      opacity: 0.82;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .scroll-top:hover,
+    .floating-back:hover {
+      background: rgba(255, 255, 255, 0.12);
+      opacity: 0.96;
+      box-shadow: 0 18px 34px rgba(0, 0, 0, 0.42);
+    }
+
+  
+
+    @media (max-width: 720px) {
+      .page-topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .page-nav {
+        justify-content: flex-start;
+        gap: 8px 16px;
+        margin-right: 0;
+      }
+    }
+
+    .project-switcher-wrap {
+      margin-top: 44px;
+      padding-top: 32px;
+      border-top: 1px solid var(--line);
+    }
+
+    .project-switcher {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .project-switcher-link {
+      display: grid;
+      gap: 8px;
+      padding: 18px 20px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: var(--soft);
+      transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+    }
+
+    .project-switcher-link:hover {
+      border-color: rgba(255, 255, 255, 0.34);
+      background: rgba(255, 255, 255, 0.04);
+      transform: translateY(-1px);
+    }
+
+    .project-switcher-label {
+      color: var(--muted);
+      font-size: 12px;
+      font-family: var(--font-label);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .project-switcher-title {
+      font-size: 20px;
+      line-height: 1.15;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-wrap: balance;
+    }
+
+    @media (max-width: 720px) {
+      .project-switcher {
+        grid-template-columns: 1fr;
+      }
+    }
+
+</style>
+</head>
+<body>
+  <main class="page">
+    <div class="page-topbar">
+      <a class="back" href="../index.html">← Назад к резюме</a>
+      <nav class="page-nav" aria-label="Навигация по проекту"><a href="#merch">Мерч</a><a href="#mascot">Маскот</a></nav>
+    </div>
+    <h1>Бренд- и спецпроекты</h1>
+    <p class="subtitle">Кейс про мерч и брендовые носители, где один визуальный язык масштабировался на разные предметы: от одежды и аксессуаров до повседневных корпоративных объектов.</p>
+    <div class="intro-grid" id="about">
+      <div>
+        <p class="subtitle">Кейсы по разработке концептов мерча и маскота для компании Эквио.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="hero-card">
+      <strong>Серия мерча как часть брендовой коммуникации</strong>
+      <p>Здесь собраны предметы, на которых фирменная графика и визуальный язык бренда переносились в физические носители. Акцент сделан не на одном объекте, а на системе: как стиль работает на одежде, аксессуарах и утилитарных вещах.</p>
+    </div>
+
+    <section class="section-block no-divider" id="merch">
+      <div class="section-head">
+        <div class="section-kicker">Мерч</div>
+        <div>
+          <h3>Футболка</h3>
+          <p>Минималистичные концепты футболок в фирменных цветах, с надписями и координатами офисов компании.</p>
+        </div>
+      </div>
+      <div class="grid-2x2">
+        <div class="merch-card"><button class="merch-trigger" type="button" data-gallery="tshirts" data-full="../assets/media/image-0058.webp" data-alt="Футболка 1"><img class="merch-image" src="../assets/media/image-0058.webp" alt="Футболка 1"></button></div>
+        <div class="merch-card"><button class="merch-trigger" type="button" data-gallery="tshirts" data-full="../assets/media/image-0059.webp" data-alt="Футболка 2"><img class="merch-image" src="../assets/media/image-0059.webp" alt="Футболка 2"></button></div>
+        <div class="merch-card"><button class="merch-trigger" type="button" data-gallery="tshirts" data-full="../assets/media/image-0060.webp" data-alt="Футболка 3"><img class="merch-image" src="../assets/media/image-0060.webp" alt="Футболка 3"></button></div>
+        <div class="merch-card"><button class="merch-trigger" type="button" data-gallery="tshirts" data-full="../assets/media/image-0061.webp" data-alt="Футболка 4"><img class="merch-image" src="../assets/media/image-0061.webp" alt="Футболка 4"></button></div>
+      </div>
+    </section>
+
+    <section class="section-block no-divider">
+      <div class="section-head">
+        <div class="section-kicker">Мерч</div>
+        <div>
+          <h3>Худи</h3>
+          <p>Минималистичные концепты худи в фирменных цветах, с надписями и координатами офиса компании.</p>
+        </div>
+      </div>
+      <div class="grid-2x2">
+        <div class="merch-card"><button class="merch-trigger" type="button" data-gallery="hoodies" data-full="../assets/media/image-0062.webp" data-alt="Худи 1"><img class="merch-image" src="../assets/media/image-0062.webp" alt="Худи 1"></button></div>
+        <div class="merch-card"><button class="merch-trigger" type="button" data-gallery="hoodies" data-full="../assets/media/image-0063.webp" data-alt="Худи 2"><img class="merch-image" src="../assets/media/image-0063.webp" alt="Худи 2"></button></div>
+        <div class="merch-card"><button class="merch-trigger" type="button" data-gallery="hoodies" data-full="../assets/media/image-0064.webp" data-alt="Худи 3"><img class="merch-image" src="../assets/media/image-0064.webp" alt="Худи 3"></button></div>
+        <div class="merch-card"><button class="merch-trigger" type="button" data-gallery="hoodies" data-full="../assets/media/image-0065.webp" data-alt="Худи 4"><img class="merch-image" src="../assets/media/image-0065.webp" alt="Худи 4"></button></div>
+      </div>
+    </section>
+
+    <section class="section-block no-divider">
+      <div class="section-head">
+        <div class="section-kicker">Мерч</div>
+        <div>
+          <h3>Шоппер</h3>
+          <p>Концепты шопперов с лозунгами компании.</p>
+        </div>
+      </div>
+      <div class="grid-1x2">
+        <div class="merch-card"><button class="merch-trigger" type="button" data-gallery="shoppers" data-full="../assets/media/image-0066.webp" data-alt="Шоппер 1"><img class="merch-image" src="../assets/media/image-0066.webp" alt="Шоппер 1"></button></div>
+        <div class="merch-card"><button class="merch-trigger" type="button" data-gallery="shoppers" data-full="../assets/media/image-0067.webp" data-alt="Шоппер 2"><img class="merch-image" src="../assets/media/image-0067.webp" alt="Шоппер 2"></button></div>
+      </div>
+    </section>
+
+    <section class="section-block no-divider">
+      <div class="section-head">
+        <div class="section-kicker">Мерч</div>
+        <div>
+          <h3>Брелок</h3>
+          <p>Концепты брелока с координатами офиса.</p>
+        </div>
+      </div>
+      <div class="grid-1x2">
+        <div class="merch-card"><button class="merch-trigger" type="button" data-gallery="keychains" data-full="../assets/media/image-0068.webp" data-alt="Брелок 1"><img class="merch-image" src="../assets/media/image-0068.webp" alt="Брелок 1"></button></div>
+        <div class="merch-card"><button class="merch-trigger" type="button" data-gallery="keychains" data-full="../assets/media/image-0069.webp" data-alt="Брелок 2"><img class="merch-image" src="../assets/media/image-0069.webp" alt="Брелок 2"></button></div>
+      </div>
+    </section>
+
+    <section class="section-block no-divider">
+      <div class="section-head">
+        <div class="section-kicker">Мерч</div>
+        <div>
+          <h3>Рюкзак</h3>
+          <p>Концепты рюкзаков с координатами офисов.</p>
+        </div>
+      </div>
+      <div class="grid-1x2">
+        <div class="merch-card"><button class="merch-trigger" type="button" data-gallery="backpacks" data-full="../assets/media/image-0070.webp" data-alt="Рюкзак 1"><img class="merch-image" src="../assets/media/image-0070.webp" alt="Рюкзак 1"></button></div>
+        <div class="merch-card"><button class="merch-trigger" type="button" data-gallery="backpacks" data-full="../assets/media/image-0071.webp" data-alt="Рюкзак 2"><img class="merch-image" src="../assets/media/image-0071.webp" alt="Рюкзак 2"></button></div>
+      </div>
+    </section>
+
+    <section class="section-block no-divider">
+      <div class="section-head">
+        <div class="section-kicker">Мерч</div>
+        <div>
+          <h3>Термос</h3>
+          <p>Концепт термоса в фирменных цветах.</p>
+        </div>
+      </div>
+      <div class="grid-1x2">
+        <div class="merch-card"><button class="merch-trigger" type="button" data-gallery="thermoses" data-full="../assets/media/image-0072.webp" data-alt="Термос 1"><img class="merch-image" src="../assets/media/image-0072.webp" alt="Термос 1"></button></div>
+        <div class="merch-card"><button class="merch-trigger" type="button" data-gallery="thermoses" data-full="../assets/media/image-0073.webp" data-alt="Термос 2"><img class="merch-image" src="../assets/media/image-0073.webp" alt="Термос 2"></button></div>
+      </div>
+    </section>
+
+    <section class="section-block no-divider">
+      <div class="section-head">
+        <div class="section-kicker">Мерч</div>
+        <div>
+          <h3>Пауэрбанк</h3>
+          <p>Концепт пауэрбанка в фирменных цветах.</p>
+        </div>
+      </div>
+      <div class="grid-1x2">
+        <div class="merch-card"><button class="merch-trigger" type="button" data-gallery="powerbanks" data-full="../assets/media/image-0074.webp" data-alt="Пауэрбанк 1"><img class="merch-image" src="../assets/media/image-0074.webp" alt="Пауэрбанк 1"></button></div>
+        <div class="merch-card"><button class="merch-trigger" type="button" data-gallery="powerbanks" data-full="../assets/media/image-0075.webp" data-alt="Пауэрбанк 2"><img class="merch-image" src="../assets/media/image-0075.webp" alt="Пауэрбанк 2"></button></div>
+      </div>
+    </section>
+
+    <section class="section-block no-divider">
+      <div class="section-head">
+        <div class="section-kicker">Мерч</div>
+        <div>
+          <h3>Стикеры</h3>
+          <p>Варианты стикеров с шуточными надписями, лозунгами и в фирменных цветах.</p>
+        </div>
+      </div>
+      <div class="wide-card">
+        <button class="merch-trigger" type="button" data-gallery="stickers" data-full="../assets/media/image-0076.webp" data-alt="Стикеры">
+          <img class="merch-image" src="../assets/media/image-0076.webp" alt="Стикеры">
+        </button>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+      <section class="section-block" id="mascot">
+        <div class="section-head">
+          <div class="section-kicker">Маскот</div>
+          <div>
+            <h3>Концепт маскота</h3>
+            <p>Разработка концепта маскота в команде из трех дизайнеров. В задачи входили поиск, разработка и генерация визуальных образов персонажа.</p>
+          </div>
+        </div>
+        <div class="mascot-showcase">
+          <div class="mascot-option">
+            <div class="mascot-card"><button class="merch-trigger" type="button" data-gallery="mascot" data-full="../assets/media/image-0077.webp" data-alt="Маскот 1"><img class="merch-image" src="../assets/media/image-0077.webp" alt="Маскот 1"></button></div>
+            <p class="mascot-caption">Идея: передать живую эмоцию, харизму, ум и сноровку через образ запоминающегося животного.</p>
+          </div>
+          <div class="mascot-option">
+            <div class="mascot-card"><button class="merch-trigger" type="button" data-gallery="mascot" data-full="../assets/media/image-0078.webp" data-alt="Маскот 2"><img class="merch-image" src="../assets/media/image-0078.webp" alt="Маскот 2"></button></div>
+            <p class="mascot-caption">Идея: мета-существо, живая экосистема, в которой все взаимосвязано, поддерживает друг друга и развивается.</p>
+          </div>
+          <div class="mascot-option">
+            <div class="mascot-card"><button class="merch-trigger" type="button" data-gallery="mascot" data-full="../assets/media/image-0079.webp" data-alt="Маскот 4"><img class="merch-image" src="../assets/media/image-0079.webp" alt="Маскот 4"></button></div>
+            <p class="mascot-caption">Идея: цифровой образ Эквио, символ развития и поддержки: помогает учиться, расти и двигаться вперед вместе с платформой.</p>
+          </div>
+          <div class="mascot-option">
+            <div class="mascot-card"><button class="merch-trigger" type="button" data-gallery="mascot" data-full="../assets/media/image-0080.webp" data-alt="Маскот 3"><img class="merch-image" src="../assets/media/image-0080.webp" alt="Маскот 3"></button></div>
+            <p class="mascot-caption">Идея: маленький и технологичный персонаж, который символизирует энергию и смекалку: помогает находить решения, соединять процессы и делать работу команды проще.</p>
+          </div>
+        </div>
+      </section>
+    <div class="project-switcher-wrap">
+      <nav class="project-switcher" id="projectSwitcher" aria-label="Переход между проектами"></nav>
+    </div>
+  </main>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox-backdrop" data-close-lightbox></div>
+    <button class="lightbox-control lightbox-close" type="button" aria-label="Закрыть" data-close-lightbox>&times;</button>
+    <div class="lightbox-frame" id="lightboxFrame">
+      <button class="lightbox-control lightbox-prev" type="button" aria-label="Предыдущее изображение" id="lightboxPrev">&#8249;</button>
+      <img class="lightbox-media" id="lightboxMedia" src="" alt="">
+      <button class="lightbox-control lightbox-next" type="button" aria-label="Следующее изображение" id="lightboxNext">&#8250;</button>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const triggers = Array.from(document.querySelectorAll(".merch-trigger"));
+      const lightbox = document.getElementById("lightbox");
+      const lightboxFrame = document.getElementById("lightboxFrame");
+      const media = document.getElementById("lightboxMedia");
+      const prevButton = document.getElementById("lightboxPrev");
+      const nextButton = document.getElementById("lightboxNext");
+      const galleries = {};
+      let currentGallery = [];
+      let currentIndex = 0;
+
+      triggers.forEach((trigger) => {
+        const galleryName = trigger.dataset.gallery || "default";
+        if (!galleries[galleryName]) galleries[galleryName] = [];
+        galleries[galleryName].push(trigger);
+      });
+
+      const render = (index) => {
+        currentIndex = (index + currentGallery.length) % currentGallery.length;
+        const trigger = currentGallery[currentIndex];
+        media.src = trigger.dataset.full;
+        media.alt = trigger.dataset.alt || "";
+        const singleItem = currentGallery.length <= 1;
+        prevButton.style.display = singleItem ? "none" : "";
+        nextButton.style.display = singleItem ? "none" : "";
+      };
+
+      const openLightbox = (galleryName, index) => {
+        currentGallery = galleries[galleryName] || [];
+        if (!currentGallery.length) return;
+        render(index);
+        lightbox.classList.add("is-open");
+        lightbox.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      };
+
+      const closeLightbox = () => {
+        lightbox.classList.remove("is-open");
+        lightbox.setAttribute("aria-hidden", "true");
+        media.src = "";
+        media.alt = "";
+        document.body.style.overflow = "";
+      };
+
+      triggers.forEach((trigger) => {
+        const galleryName = trigger.dataset.gallery || "default";
+        const gallery = galleries[galleryName] || [];
+        const galleryIndex = gallery.indexOf(trigger);
+        trigger.addEventListener("click", () => openLightbox(galleryName, galleryIndex));
+      });
+
+      prevButton.addEventListener("click", () => render(currentIndex - 1));
+      nextButton.addEventListener("click", () => render(currentIndex + 1));
+
+      lightbox.querySelectorAll("[data-close-lightbox]").forEach((node) => {
+        node.addEventListener("click", closeLightbox);
+      });
+
+      lightbox.addEventListener("click", (event) => {
+        if (event.target === lightbox || event.target === lightboxFrame) {
+          closeLightbox();
+        }
+      });
+
+      window.addEventListener("keydown", (event) => {
+        if (!lightbox.classList.contains("is-open")) return;
+        if (event.key === "Escape") closeLightbox();
+        if (event.key === "ArrowLeft") render(currentIndex - 1);
+        if (event.key === "ArrowRight") render(currentIndex + 1);
+      });
+    })();
+  </script>
+
+  <button class="floating-back" id="floatingBackButton" type="button" aria-label="Назад">&#8592;</button>
+  <button class="scroll-top" id="scrollTopButton" type="button" aria-label="??????">&#8593;</button>
+  <script>
+    (() => {
+      const button = document.getElementById("scrollTopButton");
+      const backButton = document.getElementById("floatingBackButton");
+      if (!button) return;
+
+      const toggleButton = () => {
+        const isVisible = window.scrollY > 320;
+        button.classList.toggle("visible", isVisible);
+        if (backButton) backButton.classList.toggle("visible", isVisible);
+      };
+
+      window.addEventListener("scroll", toggleButton, { passive: true });
+      toggleButton();
+
+      button.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      if (backButton) {
+        backButton.addEventListener("click", () => {
+          window.location.href = "../index.html";
+        });
+      }
+    })();
+  </script>
+
+  <script>
+    (() => {
+      const pageNavLinks = Array.from(document.querySelectorAll('.page-nav a[href^="#"]'));
+      if (!pageNavLinks.length) return;
+
+      const cleanUrl = window.location.pathname + window.location.search;
+
+      pageNavLinks.forEach((link) => {
+        const targetSelector = link.getAttribute('href');
+        if (!targetSelector || targetSelector === '#') return;
+
+        link.dataset.target = targetSelector;
+        link.setAttribute('href', cleanUrl);
+
+        link.addEventListener('click', (event) => {
+          const target = document.querySelector(link.dataset.target);
+          if (!target) return;
+
+          event.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+          if (window.history && typeof window.history.replaceState === 'function') {
+            window.history.replaceState(window.history.state, '', cleanUrl);
+          }
+        });
+      });
+    })();
+  </script>
+
+  <script>
+    (() => {
+      const projects = [
+        { file: "project-01.html", title: "Внешние коммуникации" },
+        { file: "project-02.html", title: "Внутренние коммуникации" },
+        { file: "project-03.html", title: "Бренд- и спецпроекты" },
+        { file: "project-04.html", title: "Полиграфия" },
+        { file: "project-07.html", title: "Lashes Beauty" },
+        { file: "project-05.html", title: "Щёлочь" },
+        { file: "project-06.html", title: "Любовь эмигранта" }
+      ];
+      const switcher = document.getElementById("projectSwitcher");
+      if (!switcher) return;
+      const currentFile = window.location.pathname.split("/").pop();
+      const currentIndex = projects.findIndex((project) => project.file === currentFile);
+      if (currentIndex === -1) return;
+      const prevProject = projects[(currentIndex - 1 + projects.length) % projects.length];
+      const nextProject = projects[(currentIndex + 1) % projects.length];
+      switcher.innerHTML = `
+        <a class="project-switcher-link" href="${prevProject.file}">
+          <span class="project-switcher-label">Предыдущий проект</span>
+          <span class="project-switcher-title">${prevProject.title}</span>
+        </a>
+        <a class="project-switcher-link" href="${nextProject.file}">
+          <span class="project-switcher-label">Следующий проект</span>
+          <span class="project-switcher-title">${nextProject.title}</span>
+        </a>
+      `;
+    })();
+  </script>
+
+  <script>
+    (() => {
+      const revealPage = () => document.documentElement.classList.remove("fonts-loading");
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(revealPage).catch(revealPage);
+      } else {
+        revealPage();
+      }
+    })();
+  </script>
+</body>
+</html>

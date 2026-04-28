@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Леонид Остапчук — Резюме и портфолио</title>
+  <link rel="icon" type="image/webp" href="assets/media/favicon.webp">
+  <script>document.documentElement.classList.add("fonts-loading");</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090909;
+      --paper: #101010;
+      --text: #f5f5f2;
+      --muted: #bdbdbd;
+      --line: rgba(255, 255, 255, 0.14);
+      --soft: #171717;
+      --accent: #6fb7ff;
+      --accent-soft: rgba(111, 183, 255, 0.12);
+      --font-body: "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-display: "Archivo", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-label: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    html.fonts-loading body {
+      opacity: 0;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      opacity: 1;
+      transition: opacity 0.12s ease;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(920px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 48px 0 80px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 40px;
+      color: var(--muted);
+      font-size: 14px;
+      font-family: var(--font-label);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .crumb {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 10px;
+      background: var(--soft);
+      color: inherit;
+      text-decoration: none;
+      transition: background-color 0.2s ease, color 0.2s ease;
+      border: 1px solid var(--line);
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      text-transform: none;
+    }
+
+    .crumbs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .crumb:hover {
+      background: rgba(0, 136, 204, 0.82);
+      color: #fff;
+    }
+
+    .crumb-mail:hover {
+      background: rgba(199, 22, 16, 0.82);
+      color: #fff;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .nav a {
+      color: var(--muted);
+    }
+
+    .nav a:hover,
+    .link:hover {
+      color: var(--accent);
+    }
+
+    .avatar {
+      width: 104px;
+      height: 104px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      border: 1px solid var(--line);
+      flex: 0 0 auto;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 22px;
+      margin-bottom: 18px;
+    }
+
+    .hero-title {
+      min-width: 0;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(40px, 7vw, 64px);
+      line-height: 0.92;
+      text-wrap: balance;
+      font-family: var(--font-display);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.022em;
+    }
+
+    .role {
+      margin-top: 12px;
+      font-size: 22px;
+      color: var(--muted);
+      letter-spacing: -0.015em;
+      font-family: var(--font-body);
+      font-weight: 500;
+    }
+
+    .intro {
+      max-width: 720px;
+      margin-top: 24px;
+      font-size: 18px;
+      color: var(--text);
+      text-wrap: pretty;
+    }
+
+    .intro strong {
+      font-weight: 600;
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 14px;
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .meta-row span,
+    .meta-row a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 10px;
+      background: var(--soft);
+      border-radius: 10px;
+      border: 1px solid var(--line);
+    }
+
+    .meta-row a {
+      color: inherit;
+      text-decoration: none;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .meta-row a:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.14);
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--line);
+      margin: 34px 0;
+    }
+
+    .section {
+      display: grid;
+      grid-template-columns: 180px minmax(0, 1fr);
+      gap: 28px;
+      padding: 10px 0;
+    }
+
+    .section-label {
+      color: var(--muted);
+      font-size: 13px;
+      padding-top: 4px;
+      font-family: var(--font-label);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .section-body h2 {
+      margin: 0 0 16px;
+      font-size: 28px;
+      line-height: 1.08;
+      text-wrap: balance;
+      font-family: var(--font-body);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    .section-body p {
+      margin: 0;
+      text-wrap: pretty;
+    }
+
+    .bullet-list {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--text);
+    }
+
+    .bullet-list li + li {
+      margin-top: 10px;
+    }
+
+    .entry + .entry {
+      margin-top: 28px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+    }
+
+    .entry-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 8px;
+    }
+
+    .entry-title {
+      font-size: 22px;
+      text-wrap: balance;
+      font-family: var(--font-body);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      text-transform: none;
+    }
+
+    .section-title-inline {
+      margin: 0 0 16px;
+      font-size: 22px;
+      color: var(--text);
+      text-wrap: balance;
+      font-family: var(--font-body);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+    }
+
+    .entry-note-inline {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 400;
+      font-family: var(--font-label);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .entry-subtitle {
+      color: var(--muted);
+      margin-top: 4px;
+      max-width: 720px;
+      text-wrap: pretty;
+    }
+
+    .entry-date {
+      color: var(--muted);
+      font-size: 13px;
+      white-space: nowrap;
+      padding-top: 4px;
+      font-family: var(--font-label);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .project-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .project-link {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      align-items: center;
+      gap: 16px;
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: transparent;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .project-link:hover,
+    .project-link:focus-visible {
+      background: var(--soft);
+      border-color: rgba(255, 255, 255, 0.34);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.18);
+      transform: translateY(-1px);
+      color: inherit;
+    }
+
+    .project-link:focus-visible {
+      outline: 2px solid rgba(255, 255, 255, 0.4);
+      outline-offset: 3px;
+    }
+
+    .project-title {
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+      font-size: 22px;
+      text-wrap: balance;
+      font-family: var(--font-body);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      text-transform: none;
+    }
+
+    .project-date-inline {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 400;
+      font-family: var(--font-label);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .project-name {
+      display: inline-block;
+      font-family: inherit;
+      font-weight: inherit;
+      letter-spacing: inherit;
+      text-transform: inherit;
+      text-decoration-line: underline;
+      text-decoration-color: rgba(255, 255, 255, 0.88);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.18em;
+    }
+
+    .project-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .project-date {
+      color: var(--muted);
+      font-size: 13px;
+      white-space: nowrap;
+      padding-top: 4px;
+      flex: 0 0 auto;
+      font-family: var(--font-label);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .project-icon {
+      width: 28px;
+      height: 28px;
+      margin-right: 10px;
+      border-radius: 8px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      display: inline-grid;
+      place-items: center;
+      font-size: 14px;
+      flex: 0 0 auto;
+    }
+
+    .project-description {
+      margin-top: 6px;
+      color: var(--muted);
+      max-width: 680px;
+      text-wrap: pretty;
+    }
+
+    .bullet-list li,
+    .section-label,
+    .tag {
+      text-wrap: pretty;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      padding: 6px 10px;
+      border-radius: 10px;
+      background: var(--soft);
+      color: var(--text);
+      font-size: 14px;
+      border: 1px solid var(--line);
+      font-family: var(--font-body);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    .small-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    @media (max-width: 760px) {
+      .page {
+        width: min(100% - 24px, 920px);
+        padding: 24px 0 56px;
+      }
+
+      .topbar,
+      .entry-head,
+      .section {
+        grid-template-columns: 1fr;
+        display: grid;
+      }
+
+      .topbar {
+        gap: 14px;
+      }
+
+      .section {
+        gap: 10px;
+      }
+
+      .entry-date {
+        white-space: normal;
+      }
+
+      .project-link {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 8px;
+        padding-inline: 14px;
+      }
+
+      .project-head {
+        display: grid;
+        gap: 4px;
+      }
+
+      .project-date,
+      .entry-date {
+        white-space: normal;
+        padding-top: 0;
+      }
+
+      .intro {
+        font-size: 17px;
+      }
+
+      .hero-head {
+        display: block;
+        margin-bottom: 0;
+      }
+
+      .avatar {
+        width: 88px;
+        height: 88px;
+        margin-bottom: 18px;
+      }
+
+      .role {
+        font-size: 20px;
+      }
+    }
+  
+    .scroll-top {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 46px;
+      height: 46px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(20, 20, 20, 0.88);
+      color: var(--text);
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.35);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      z-index: 999;
+    }
+
+    .scroll-top.visible {
+      opacity: 0.82;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .scroll-top:hover {
+      background: rgba(255, 255, 255, 0.12);
+      opacity: 0.96;
+      box-shadow: 0 18px 34px rgba(0, 0, 0, 0.42);
+    }
+
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <div class="crumbs">
+        <a class="crumb" href="https://t.me/leostapchuk" target="_blank" rel="noopener noreferrer">Телеграм</a>
+        <a class="crumb crumb-mail" href="mailto:leonidos2396@gmail.com">Почта</a>
+      </div>
+      <nav class="nav">
+        <a href="#summary">Обо мне</a>
+        <a href="#experience">Опыт</a>
+        <a href="#projects">Проекты</a>
+        <a href="#skills">Навыки</a>
+      </nav>
+    </div>
+
+    <header>
+      <div class="hero-head">
+        <img class="avatar" src="assets/media/image-0001.webp" alt="Леонид Остапчук">
+        <div class="hero-title">
+          <h1>Леонид Остапчук</h1>
+          <div class="role">Графический дизайнер · Middle</div>
+        </div>
+      </div>
+    </header>
+
+    <div class="divider"></div>
+
+    <section class="section" id="summary">
+      <div class="section-label">Обо мне</div>
+      <div class="section-body">
+        <p>
+          Графический и коммуникационный дизайнер с 2-летним опытом в HR-Tech. Разрабатываю визуальные решения для маркетинга, внутренних коммуникаций и бренда: от SMM-контента и инфографики до фирменного стиля и полиграфии. Работаю с айдентикой, адаптирую дизайн под разные форматы и поддерживаю целостность визуальной системы.
+        </p>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="section" id="experience">
+      <div class="section-label">Опыт</div>
+      <div class="section-body">
+        <div class="entry">
+          <div class="entry-head">
+            <div>
+              <div class="entry-title">Графический дизайнер, junior - middle</div>
+              <div class="entry-subtitle">Эквио · HR-Tech платформа для обучения и мотивации персонала</div>
+            </div>
+            <div class="entry-date">апрель 2024 — апрель 2026</div>
+          </div>
+          <ul class="bullet-list">
+            <li>Разрабатывал визуальный контент для Телеграма, сайта, email-рассылок и других внешних каналов коммуникации: баннеры, карточки функционала, инфографику, коллажи и обложки.</li>
+            <li>Обновил внутреннюю платформу Эквио в новой айдентике и разработал систему наград, включающую более 100 ачивок.</li>
+            <li>Создавал материалы для внутренних коммуникаций: баннеры, заглушки, плакаты, фоны и визуальные элементы для корпоративных инициатив.</li>
+            <li>Участвовал в бренд-проектах: разработка мерча и концепции маскота компании.</li>
+            <li>Готовил печатную продукцию: буклеты и стикер-паки.</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="section" id="projects">
+      <div class="section-label">Проекты в Эквио</div>
+      <div class="section-body">
+        <div class="project-list">
+          <a class="project-link link" href="projects/project-01.html">
+            <div>
+              <div class="project-title"><span class="project-name">Внешние коммуникации</span></div>
+              <div class="project-description">Телеграм, блог, вебинары, email-рассылки и соцсети: единая система внешней коммуникации бренда в разных каналах.</div>
+            </div>
+          </a>
+
+          <a class="project-link link" href="projects/project-02.html">
+            <div>
+              <div class="project-title"><span class="project-name">Внутренние коммуникации</span></div>
+              <div class="project-description">Контент для платформы Эквио, внутренняя айдентика, награды и система внутренних коммуникаций для команды.</div>
+            </div>
+          </a>
+
+          <a class="project-link link" href="projects/project-03.html">
+            <div>
+              <div class="project-title"><span class="project-name">Бренд- и спецпроекты</span></div>
+              <div class="project-description">Разработка концептов мерча и маскота для компании.</div>
+            </div>
+          </a>
+
+          <a class="project-link link" href="projects/project-04.html">
+            <div>
+              <div class="project-title"><span class="project-name">Полиграфия</span></div>
+              <div class="project-description">Буклет и стикер-паки для офлайн- и промо-задач бренда.</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="section">
+      <div class="section-label">Личные проекты</div>
+      <div class="section-body">
+        <div class="project-list">
+          <a class="project-link link" href="projects/project-07.html">
+            <div>
+              <div class="project-head">
+                <div class="project-title"><span class="project-name">Lashes Beauty</span></div>
+                <div class="project-date">март 2025 — июль 2025</div>
+              </div>
+              <div class="project-description">Ребрендинг сети салонов красоты: логотип, фирменный стиль, digital- и print-носители, брендбук.</div>
+            </div>
+          </a>
+
+          <a class="project-link link" href="projects/project-05.html">
+            <div>
+              <div class="project-head">
+                <div class="project-title"><span class="project-name">Щелочь</span></div>
+                <div class="project-date">август 2024 — август 2025</div>
+              </div>
+              <div class="project-description">Автор в телеграм-сообществе «ГРАФДИЗЩ®»: контент о спортивном дизайне и работа с визуальной подачей.</div>
+            </div>
+          </a>
+
+          <a class="project-link link" href="projects/project-06.html">
+            <div>
+              <div class="project-head">
+                <div class="project-title"><span class="project-name">Любовь эмигранта</span></div>
+                <div class="project-date">январь 2025</div>
+              </div>
+              <div class="project-description">Обложка для мини-альбома «Белый лавр» группы «Любовь эмигранта».</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="section" id="skills">
+      <div class="section-label">Навыки</div>
+      <div class="section-body small-grid">
+        <div class="tag-list">
+          <span class="tag">Figma</span>
+          <span class="tag">Adobe Photoshop</span>
+          <span class="tag">Adobe Illustrator</span>
+          <span class="tag">Визуальные коммуникации</span>
+          <span class="tag">Коммуникационный дизайн</span>
+          <span class="tag">Дизайн соцсетей</span>
+          <span class="tag">Иллюстрация</span>
+          <span class="tag">Брендинг</span>
+          <span class="tag">Полиграфия</span>
+          <span class="tag">Генеративные инструменты</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="section">
+      <div class="section-label">Образование</div>
+      <div class="section-body">
+        <div class="entry-head">
+          <div>
+            <div class="entry-title">Bang Bang Education</div>
+            <div class="entry-subtitle">Курс по графическому дизайну</div>
+          </div>
+          <div class="entry-date">Февраль 2023 — февраль 2024</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="section">
+      <div class="section-label">Языки</div>
+      <div class="section-body">
+        <p>Русский — родной<br>Английский — базовый / elementary</p>
+      </div>
+    </section>
+  </main>
+  <script>
+    document.documentElement.classList.add("fonts-loading");
+
+    const revealPage = () => {
+      document.documentElement.classList.remove("fonts-loading");
+    };
+
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(revealPage).catch(revealPage);
+    } else {
+      revealPage();
+    }
+  </script>
+  <script>
+    (() => {
+      const storageKey = "portfolio:index-scroll-y";
+      const returnKey = "portfolio:index-return";
+      const links = Array.from(document.querySelectorAll(".project-link"));
+
+      if ("scrollRestoration" in history) {
+        history.scrollRestoration = "manual";
+      }
+
+      links.forEach((link) => {
+        link.addEventListener("click", () => {
+          sessionStorage.setItem(storageKey, String(window.scrollY));
+          sessionStorage.setItem(returnKey, "1");
+        });
+      });
+
+      const savedScroll = sessionStorage.getItem(storageKey);
+      const shouldRestore = sessionStorage.getItem(returnKey) === "1" && savedScroll;
+
+      if (shouldRestore) {
+        const scrollY = Number(savedScroll);
+        if (!Number.isNaN(scrollY)) {
+          const restoreScroll = () => window.scrollTo(0, scrollY);
+          requestAnimationFrame(() => {
+            restoreScroll();
+            setTimeout(restoreScroll, 60);
+          });
+        }
+
+        sessionStorage.removeItem(returnKey);
+        return;
+      }
+
+      sessionStorage.removeItem(returnKey);
+      window.scrollTo(0, 0);
+    })();
+  </script>
+
+  <button class="scroll-top" id="scrollTopButton" type="button" aria-label="??????">&#8593;</button>
+  <script>
+    (() => {
+      const button = document.getElementById("scrollTopButton");
+      if (!button) return;
+
+      const toggleButton = () => {
+        button.classList.toggle("visible", window.scrollY > 320);
+      };
+
+      window.addEventListener("scroll", toggleButton, { passive: true });
+      toggleButton();
+
+      button.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    })();
+  </script>
+</body>
+</html>

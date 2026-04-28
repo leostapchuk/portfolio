@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Щёлочь — Леонид Остапчук</title>
+  <link rel="icon" type="image/webp" href="../assets/media/favicon.webp">
+  <script>document.documentElement.classList.add("fonts-loading");</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --bg: #090909;
+      --paper: #101010;
+      --text: #f5f5f2;
+      --muted: #aaa9a3;
+      --line: rgba(255, 255, 255, 0.14);
+      --soft: #171717;
+      --accent: #6fb7ff;
+      --font-body: "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-display: "Archivo", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-label: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    * { box-sizing: border-box; }
+
+    html.fonts-loading body { opacity: 0; }
+
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      opacity: 1;
+      transition: opacity 0.12s ease;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(980px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 48px 0 72px;
+    }
+
+    [id] {
+      scroll-margin-top: 24px;
+    }
+
+    .page-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+
+    .page-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 12px 24px;
+      margin: 0 0 0 auto;
+      width: fit-content;
+      max-width: 100%;
+    }
+
+    .page-nav a {
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      font-size: 14px;
+      line-height: 1;
+      transition: color 0.2s ease;
+      font-family: var(--font-label);
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .page-nav a:hover,
+    .section-copy a:hover,
+    .post-channel:hover {
+      color: var(--accent);
+    }
+
+    .back,
+    .section-kicker {
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      font-size: 14px;
+      line-height: 1;
+      font-family: var(--font-label);
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .back:hover {
+      color: var(--accent);
+    }
+
+    .page-topbar .back,
+    .page-topbar .page-nav a {
+      font-size: 15px;
+      line-height: 1.2;
+      font-weight: 400;
+    }
+
+    h1 {
+      margin: 0 0 20px;
+      font-size: clamp(36px, 6vw, 58px);
+      line-height: 0.92;
+      letter-spacing: 0.022em;
+      text-wrap: balance;
+      font-family: var(--font-display);
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 24px;
+      letter-spacing: -0.025em;
+      text-wrap: balance;
+      font-family: var(--font-body);
+      font-weight: 700;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 10px;
+      background: var(--soft);
+      color: var(--muted);
+      font-size: 13px;
+      font-family: var(--font-body);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    p,
+    .subtitle {
+      color: var(--muted);
+      text-wrap: pretty;
+    }
+
+    .subtitle {
+      margin: 0;
+      font-size: 16px;
+    }
+
+    .intro-grid,
+    .grid {
+      display: grid;
+      grid-template-columns: 180px minmax(0, 1fr);
+      gap: 28px;
+      align-items: start;
+      margin-bottom: 24px;
+    }
+
+    .intro-grid {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0;
+      align-items: start;
+      margin-top: 28px;
+    }
+
+    .section-copy {
+      display: grid;
+      gap: 10px;
+    }
+
+    .section-copy p,
+    .section-longread {
+      margin: 0;
+    }
+
+    .section-kicker {
+      padding-top: 4px;
+    }
+
+    .section-copy a,
+    .section-longread a {
+      color: var(--accent);
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--line);
+      margin: 36px 0;
+    }
+
+    .section-block {
+      margin-top: 40px;
+    }
+
+    .wide-gallery {
+      margin-top: 0;
+    }
+
+    .posts-grid {
+      display: grid;
+      gap: 40px;
+    }
+
+    .post-template {
+      display: grid;
+      gap: 18px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: var(--bg);
+    }
+
+    .post-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .post-channel {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      transition: color 0.2s ease, opacity 0.2s ease;
+    }
+
+    .post-channel-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--soft);
+      flex: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+    }
+
+    .post-channel-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .post-channel-name {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      transition: color 0.2s ease;
+    }
+
+    .post-channel:hover .post-channel-avatar {
+      border-color: rgba(35, 131, 226, 0.22);
+      box-shadow: 0 8px 18px rgba(35, 131, 226, 0.12);
+      opacity: 0.96;
+    }
+
+    .post-channel:hover .post-channel-name {
+      color: var(--accent);
+    }
+
+    .post-media {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .post-image-card {
+      width: 100%;
+      display: block;
+      border: 0;
+      padding: 0;
+      background: transparent;
+      border-radius: 24px;
+      overflow: hidden;
+      cursor: zoom-in;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .post-image-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 24px;
+      background: var(--soft);
+    }
+
+    .post-image-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(55, 53, 47, 0.08);
+    }
+
+    .post-inline-title {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    .post-copy p {
+      margin: 0;
+      font-size: 16px;
+    }
+
+    .feature-pair {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.65fr);
+      gap: 20px;
+      align-items: start;
+    }
+
+    .feature-media,
+    .feature-video {
+      width: 100%;
+    }
+
+    .contest-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(17, 24, 39, 0.9);
+      z-index: 1000;
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox-backdrop {
+      position: absolute;
+      inset: 0;
+    }
+
+    .lightbox-frame {
+      position: relative;
+      z-index: 1;
+      width: min(1400px, calc(100vw - 96px));
+      max-height: calc(100vh - 96px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-image {
+      display: block;
+      max-width: min(88vw, 1400px);
+      max-height: 88vh;
+      width: auto;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+      background: transparent;
+    }
+
+    .lightbox-prev,
+    .lightbox-next,
+    .lightbox-close {
+      position: absolute;
+      border: 0;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+      transition: background 0.2s ease;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-prev,
+    .lightbox-next {
+      top: 50%;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      font-size: 28px;
+      line-height: 1;
+      transform: translateY(-50%);
+    }
+
+    .lightbox-prev { left: 24px; }
+    .lightbox-next { right: 24px; }
+
+    .lightbox-close {
+      top: 24px;
+      right: 24px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    .lightbox-prev:hover,
+    .lightbox-next:hover,
+    .lightbox-close:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .scroll-top,
+    .floating-back {
+      position: fixed;
+      width: 46px;
+      height: 46px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(20, 20, 20, 0.88);
+      color: var(--text);
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 0 12px 24px rgba(55, 53, 47, 0.08);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      z-index: 999;
+    }
+
+    .scroll-top {
+      right: 20px;
+      bottom: 20px;
+    }
+
+    .floating-back {
+      left: 20px;
+      top: 20px;
+    }
+
+    .scroll-top.visible,
+    .floating-back.visible {
+      opacity: 0.82;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .scroll-top:hover,
+    .floating-back:hover {
+      background: rgba(255, 255, 255, 0.12);
+      opacity: 0.96;
+      box-shadow: 0 18px 34px rgba(0, 0, 0, 0.42);
+    }
+
+    @media (max-width: 720px) {
+      .page {
+        width: min(100% - 24px, 980px);
+        padding: 24px 0 56px;
+      }
+
+      .page-topbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .page-nav {
+        justify-content: flex-start;
+        gap: 8px 18px;
+        margin-left: 0;
+      }
+
+      .intro-grid,
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .section-block {
+        margin-top: 48px;
+      }
+
+      .wide-gallery {
+        margin-top: 20px;
+      }
+
+      .post-media {
+        gap: 10px;
+      }
+
+      .feature-pair {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 0.72fr);
+        gap: 12px;
+        align-items: stretch;
+      }
+
+      .contest-grid {
+        gap: 12px;
+      }
+
+      .post-image-card img {
+        border-radius: 18px;
+      }
+
+      .post-template {
+        padding: 18px;
+        border-radius: 24px;
+      }
+
+      .lightbox {
+        padding: 16px;
+      }
+
+      .lightbox-frame {
+        width: min(100%, calc(100vw - 32px));
+        max-height: calc(100vh - 32px);
+      }
+
+      .lightbox-prev,
+      .lightbox-next {
+        width: 44px;
+        height: 44px;
+        font-size: 28px;
+      }
+
+      .lightbox-prev { left: 12px; }
+      .lightbox-next { right: 12px; }
+
+      .lightbox-close {
+        top: 12px;
+        right: 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .feature-pair {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 0.62fr);
+      }
+
+      .contest-grid,
+      .post-media {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    .project-switcher-wrap {
+      margin-top: 44px;
+      padding-top: 32px;
+      border-top: 1px solid var(--line);
+    }
+
+    .project-switcher {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .project-switcher-link {
+      display: grid;
+      gap: 8px;
+      padding: 18px 20px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: var(--soft);
+      transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+    }
+
+    .project-switcher-link:hover {
+      border-color: rgba(255, 255, 255, 0.34);
+      background: rgba(255, 255, 255, 0.04);
+      transform: translateY(-1px);
+    }
+
+    .project-switcher-label {
+      color: var(--muted);
+      font-size: 12px;
+      font-family: var(--font-label);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .project-switcher-title {
+      font-size: 20px;
+      line-height: 1.15;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-wrap: balance;
+    }
+
+    @media (max-width: 720px) {
+      .project-switcher {
+        grid-template-columns: 1fr;
+      }
+    }
+
+</style>
+</head>
+<body>
+  <main class="page">
+    <div class="page-topbar">
+      <a class="back" href="../index.html">← Назад к резюме</a>
+      <nav class="page-nav" aria-label="Навигация по проекту">
+        <a href="#posts">Посты</a>
+        <a href="#valentine">Валентинка</a>
+        <a href="#contest">Конкурс</a>
+      </nav>
+    </div>
+    <h1>Щёлочь</h1>
+    <div class="intro-grid" id="about">
+      <div>
+        <p class="subtitle">Создание контента для телеграм-сообщества «ГРАФДИЗЩ®»: одиночные посты и серии на тему спортивного дизайна с акцентом на визуальную подачу. Участие в командных форматах и конкурсах.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <section class="section-block" id="posts">
+      <div class="grid">
+        <div class="section-kicker">Посты</div>
+        <div class="section-copy">
+          <p>Визуальные разборы футбольных форм, эмблем и патчей.</p>
+        </div>
+      </div>
+      <div class="wide-gallery">
+        <div class="posts-grid">
+        <div class="post-template">
+          <div class="post-topbar">
+            <a class="post-channel" href="https://t.me/alkali_design/8009?single" target="_blank" rel="noopener noreferrer" aria-label="Открыть пост в телеграме">
+              <div class="post-channel-avatar" aria-hidden="true">
+                <img src="../assets/media/image-0086.webp" alt="">
+              </div>
+              <div class="post-channel-name">ГРАФДИЗЩ®</div>
+            </a>
+          </div>
+          <div class="post-media">
+            <button class="post-image-card post-image-card--natural" type="button" data-gallery="post01" data-index="0" aria-label="Открыть кадр 1">
+              <img src="../assets/media/image-0087.webp" alt="Эволюция патчей — кадр 1">
+            </button>
+            <button class="post-image-card post-image-card--natural" type="button" data-gallery="post01" data-index="1" aria-label="Открыть кадр 2">
+              <img src="../assets/media/image-0088.webp" alt="Эволюция патчей — кадр 2">
+            </button>
+            <button class="post-image-card post-image-card--natural" type="button" data-gallery="post01" data-index="2" aria-label="Открыть кадр 3">
+              <img src="../assets/media/image-0089.webp" alt="Эволюция патчей — кадр 3">
+            </button>
+            <button class="post-image-card post-image-card--natural" type="button" data-gallery="post01" data-index="3" aria-label="Открыть кадр 4">
+              <img src="../assets/media/image-0090.webp" alt="Эволюция патчей — кадр 4">
+            </button>
+            <button class="post-image-card post-image-card--natural" type="button" data-gallery="post01" data-index="4" aria-label="Открыть кадр 5">
+              <img src="../assets/media/image-0091.webp" alt="Эволюция патчей — кадр 5">
+            </button>
+            <button class="post-image-card post-image-card--natural" type="button" data-gallery="post01" data-index="5" aria-label="Открыть кадр 6">
+              <img src="../assets/media/image-0092.webp" alt="Эволюция патчей — кадр 6">
+            </button>
+          </div>
+          <div class="post-inline-title">Эволюция нарукавных патчей в топ-5 лигах</div>
+          <div class="post-copy">
+            <p>Карусель про эволюцию нарукавных патчей в топ-5 европейских лигах и то, как менялись их форма, графика и визуальный характер.</p>
+          </div>
+        </div>
+
+        <div class="post-template">
+          <div class="post-topbar">
+            <a class="post-channel" href="https://t.me/alkali_design/6281" target="_blank" rel="noopener noreferrer" aria-label="Открыть пост в телеграме">
+              <div class="post-channel-avatar" aria-hidden="true">
+                <img src="../assets/media/image-0086.webp" alt="">
+              </div>
+              <div class="post-channel-name">ГРАФДИЗЩ®</div>
+            </a>
+          </div>
+          <div class="post-media">
+            <button class="post-image-card post-image-card--natural" type="button" data-gallery="post02" data-index="0" aria-label="Открыть кадр 1">
+              <img src="../assets/media/image-0093.webp" alt="Неудачные изменения эмблем — кадр 1">
+            </button>
+            <button class="post-image-card post-image-card--natural" type="button" data-gallery="post02" data-index="1" aria-label="Открыть кадр 2">
+              <img src="../assets/media/image-0094.webp" alt="Неудачные изменения эмблем — кадр 2">
+            </button>
+            <button class="post-image-card post-image-card--natural" type="button" data-gallery="post02" data-index="2" aria-label="Открыть кадр 3">
+              <img src="../assets/media/image-0095.webp" alt="Неудачные изменения эмблем — кадр 3">
+            </button>
+            <button class="post-image-card post-image-card--natural" type="button" data-gallery="post02" data-index="3" aria-label="Открыть кадр 4">
+              <img src="../assets/media/image-0096.webp" alt="Неудачные изменения эмблем — кадр 4">
+            </button>
+            <button class="post-image-card post-image-card--natural" type="button" data-gallery="post02" data-index="4" aria-label="Открыть кадр 5">
+              <img src="../assets/media/image-0097.webp" alt="Неудачные изменения эмблем — кадр 5">
+            </button>
+            <button class="post-image-card post-image-card--natural" type="button" data-gallery="post02" data-index="5" aria-label="Открыть кадр 6">
+              <img src="../assets/media/image-0098.webp" alt="Неудачные изменения эмблем — кадр 6">
+            </button>
+            <button class="post-image-card post-image-card--natural" type="button" data-gallery="post02" data-index="6" aria-label="Открыть кадр 7">
+              <img src="../assets/media/image-0099.webp" alt="Неудачные изменения эмблем — кадр 7">
+            </button>
+            <button class="post-image-card post-image-card--natural" type="button" data-gallery="post02" data-index="7" aria-label="Открыть кадр 8">
+              <img src="../assets/media/image-0100.webp" alt="Неудачные изменения эмблем — кадр 8">
+            </button>
+            <button class="post-image-card post-image-card--natural" type="button" data-gallery="post02" data-index="8" aria-label="Открыть кадр 9">
+              <img src="../assets/media/image-0101.webp" alt="Неудачные изменения эмблем — кадр 9">
+            </button>
+          </div>
+          <div class="post-inline-title">Неудачные изменения футбольных эмблем</div>
+          <div class="post-copy">
+            <p>Пост о спорных изменениях футбольных эмблем и о том, как редизайн в спорте сталкивается с традицией, памятью болельщиков и клубной идентичностью.</p>
+          </div>
+        </div>
+
+        <div class="post-template">
+          <div class="post-topbar">
+            <a class="post-channel" href="https://t.me/alkali_design/6364" target="_blank" rel="noopener noreferrer" aria-label="Открыть пост в телеграме">
+              <div class="post-channel-avatar" aria-hidden="true">
+                <img src="../assets/media/image-0086.webp" alt="">
+              </div>
+              <div class="post-channel-name">ГРАФДИЗЩ®</div>
+            </a>
+          </div>
+          <div class="post-media">
+            <button class="post-image-card post-image-card--natural" type="button" data-gallery="post03" data-index="0" aria-label="Открыть кадр 1">
+              <img src="../assets/media/image-0102.webp" alt="Football name sets — кадр 1">
+            </button>
+            <button class="post-image-card post-image-card--natural" type="button" data-gallery="post03" data-index="1" aria-label="Открыть кадр 2">
+              <img src="../assets/media/image-0103.webp" alt="Football name sets — кадр 2">
+            </button>
+            <button class="post-image-card post-image-card--natural" type="button" data-gallery="post03" data-index="2" aria-label="Открыть кадр 3">
+              <img src="../assets/media/image-0104.webp" alt="Football name sets — кадр 3">
+            </button>
+            <button class="post-image-card post-image-card--natural" type="button" data-gallery="post03" data-index="3" aria-label="Открыть кадр 4">
+              <img src="../assets/media/image-0105.webp" alt="Football name sets — кадр 4">
+            </button>
+            <button class="post-image-card post-image-card--natural" type="button" data-gallery="post03" data-index="4" aria-label="Открыть кадр 5">
+              <img src="../assets/media/image-0106.webp" alt="Football name sets — кадр 5">
+            </button>
+            <button class="post-image-card post-image-card--natural" type="button" data-gallery="post03" data-index="5" aria-label="Открыть кадр 6">
+              <img src="../assets/media/image-0107.webp" alt="Football name sets — кадр 6">
+            </button>
+            <button class="post-image-card post-image-card--natural" type="button" data-gallery="post03" data-index="6" aria-label="Открыть кадр 7">
+              <img src="../assets/media/image-0108.webp" alt="Football name sets — кадр 7">
+            </button>
+            <button class="post-image-card post-image-card--natural" type="button" data-gallery="post03" data-index="7" aria-label="Открыть кадр 8">
+              <img src="../assets/media/image-0109.webp" alt="Football name sets — кадр 8">
+            </button>
+            <button class="post-image-card post-image-card--natural" type="button" data-gallery="post03" data-index="8" aria-label="Открыть кадр 9">
+              <img src="../assets/media/image-0110.webp" alt="Football name sets — кадр 9">
+            </button>
+          </div>
+          <div class="post-inline-title">Football name sets</div>
+          <div class="post-copy">
+            <p>Карусель показывает разные подходы к набору фамилий и номеров и помогает увидеть, как шрифт становится частью клубной айдентики, а не просто функциональной маркировкой.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="section-block" id="valentine">
+      <div class="grid">
+        <div class="section-kicker">Командный формат</div>
+        <div class="section-copy">
+          <h2>Валентинка</h2>
+          <p>Командная инициатива авторов сообщества «ГРАФДИЗЩ®», в которой каждый участник создавал <a href="https://t.me/alkali_design/5474" target="_blank" rel="noopener noreferrer">свою индивидуальную валентинку</a>. Мой вариант — ностальгическая вырезалка со Шреком.</p>
+        </div>
+      </div>
+      <div class="wide-gallery longread-stack">
+        <div class="feature-pair">
+          <button class="post-image-card post-image-card--natural feature-media" type="button" data-gallery="valentinePair" data-index="0" aria-label="Открыть валентинку">
+            <img id="valentineImage" src="../assets/media/image-0111.webp" alt="Валентинка для канала Щёлочь">
+          </button>
+          <button class="feature-video post-image-card post-image-card--natural" id="valentineVideoCard" type="button" data-gallery="valentinePair" data-index="1" aria-label="Открыть гифку валентинки">
+            <img id="valentineGifImage" src="../assets/media/image-0112.webp" alt="Анимированная гифка для валентинки">
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="section-block" id="contest">
+      <div class="grid">
+        <div class="section-kicker">Конкурс</div>
+        <div class="section-copy">
+          <h2>Дизайн джерси для Щ</h2>
+          <p>Концепт джерси для «Щёлочи» с визуальными отсылками к формам «Милана» и московского «Спартака».</p>
+          <p class="section-longread">Для подогрева интереса к <a href="https://t.me/alkali_design/6721?single" target="_blank" rel="noopener noreferrer">конкурсу</a> я написал лонгрид о том, как футбольные джерси стали частью повседневной моды. <a href="https://telegra.ph/EHvolyuciya-Futbolnoj-Formy-04-27" target="_blank" rel="noopener noreferrer">Читать лонгрид</a></p>
+        </div>
+      </div>
+      <div class="wide-gallery">
+        <div class="contest-grid">
+          <button class="post-image-card post-image-card--natural" type="button" data-gallery="contest01" data-index="0" aria-label="Открыть форму 1">
+            <img src="../assets/media/image-0113.webp" alt="Форма для конкурса — вариант 1">
+          </button>
+          <button class="post-image-card post-image-card--natural" type="button" data-gallery="contest01" data-index="1" aria-label="Открыть форму 2">
+            <img src="../assets/media/image-0114.webp" alt="Форма для конкурса — вариант 2">
+          </button>
+        </div>
+      </div>
+    </section>
+    <div class="project-switcher-wrap">
+      <nav class="project-switcher" id="projectSwitcher" aria-label="Переход между проектами"></nav>
+    </div>
+  </main>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox-backdrop" data-close-lightbox></div>
+    <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Закрыть" data-close-lightbox>&times;</button>
+    <div class="lightbox-frame">
+      <button class="lightbox-prev" id="lightboxPrev" type="button" aria-label="Предыдущее изображение">&#8249;</button>
+      <img class="lightbox-image" id="lightboxImage" alt="">
+      <button class="lightbox-next" id="lightboxNext" type="button" aria-label="Следующее изображение">&#8250;</button>
+    </div>
+  </div>
+
+  <button class="scroll-top" id="scrollTopButton" type="button" aria-label="Наверх">&#8593;</button>
+  <button class="floating-back" id="floatingBackButton" type="button" aria-label="Назад">&#8592;</button>
+  <script>
+    (() => {
+      const button = document.getElementById("scrollTopButton");
+      const backButton = document.getElementById("floatingBackButton");
+      if (!button) return;
+
+      const toggleButton = () => {
+        const isVisible = window.scrollY > 320;
+        button.classList.toggle("visible", isVisible);
+        if (backButton) backButton.classList.toggle("visible", isVisible);
+      };
+
+      window.addEventListener("scroll", toggleButton, { passive: true });
+      toggleButton();
+
+      button.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      if (backButton) {
+        backButton.addEventListener("click", () => {
+          window.location.href = "../index.html";
+        });
+      }
+    })();
+
+    (() => {
+      const valentineImage = document.getElementById("valentineImage");
+      const valentineGifImage = document.getElementById("valentineGifImage");
+      const valentineVideoCard = document.getElementById("valentineVideoCard");
+
+      if (valentineImage && valentineVideoCard && valentineGifImage) {
+        const syncValentineMediaHeight = () => {
+          valentineVideoCard.style.height = "";
+          const imageHeight = valentineImage.getBoundingClientRect().height;
+          valentineVideoCard.style.height = imageHeight > 0 ? `${Math.round(imageHeight)}px` : "";
+        };
+
+        if (valentineImage.complete && valentineGifImage.complete) {
+          syncValentineMediaHeight();
+        } else {
+          if (!valentineImage.complete) {
+            valentineImage.addEventListener("load", syncValentineMediaHeight, { once: true });
+          }
+          if (!valentineGifImage.complete) {
+            valentineGifImage.addEventListener("load", syncValentineMediaHeight, { once: true });
+          }
+        }
+
+        window.addEventListener("resize", syncValentineMediaHeight);
+      }
+    })();
+
+    (() => {
+      const galleries = {
+        post01: [
+          "../assets/media/image-0087.webp",
+          "../assets/media/image-0088.webp",
+          "../assets/media/image-0089.webp",
+          "../assets/media/image-0090.webp",
+          "../assets/media/image-0091.webp",
+          "../assets/media/image-0092.webp"
+        ],
+        post02: [
+          "../assets/media/image-0093.webp",
+          "../assets/media/image-0094.webp",
+          "../assets/media/image-0095.webp",
+          "../assets/media/image-0096.webp",
+          "../assets/media/image-0097.webp",
+          "../assets/media/image-0098.webp",
+          "../assets/media/image-0099.webp",
+          "../assets/media/image-0100.webp",
+          "../assets/media/image-0101.webp"
+        ],
+        post03: [
+          "../assets/media/image-0102.webp",
+          "../assets/media/image-0103.webp",
+          "../assets/media/image-0104.webp",
+          "../assets/media/image-0105.webp",
+          "../assets/media/image-0106.webp",
+          "../assets/media/image-0107.webp",
+          "../assets/media/image-0108.webp",
+          "../assets/media/image-0109.webp",
+          "../assets/media/image-0110.webp"
+        ],
+        contest01: [
+          "../assets/media/image-0113.webp",
+          "../assets/media/image-0114.webp"
+        ],
+        valentinePair: [
+          "../assets/media/image-0111.webp"
+        ],
+        valentineGif01: [
+          "../assets/media/image-0112.webp"
+        ]
+      };
+
+      galleries.valentinePair = [galleries.valentinePair[0], galleries.valentineGif01[0]];
+
+      const lightbox = document.getElementById("lightbox");
+      const lightboxFrame = lightbox.querySelector(".lightbox-frame");
+      const image = document.getElementById("lightboxImage");
+      const close = document.getElementById("lightboxClose");
+      const prev = document.getElementById("lightboxPrev");
+      const next = document.getElementById("lightboxNext");
+      const triggers = Array.from(document.querySelectorAll("[data-gallery][data-index]"));
+
+      let currentGallery = null;
+      let currentIndex = 0;
+
+      const render = () => {
+        const items = galleries[currentGallery] || [];
+        image.src = items[currentIndex] || "";
+        const isVisible = items.length > 1;
+        prev.style.display = isVisible ? "" : "none";
+        next.style.display = isVisible ? "" : "none";
+      };
+
+      const open = (gallery, index) => {
+        currentGallery = gallery;
+        currentIndex = index;
+        render();
+        lightbox.classList.add("open");
+        lightbox.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      };
+
+      const hide = () => {
+        lightbox.classList.remove("open");
+        lightbox.setAttribute("aria-hidden", "true");
+        image.src = "";
+        document.body.style.overflow = "";
+      };
+
+      const step = (delta) => {
+        const items = galleries[currentGallery] || [];
+        if (!items.length) return;
+        currentIndex = (currentIndex + delta + items.length) % items.length;
+        render();
+      };
+
+      triggers.forEach((trigger) => {
+        trigger.addEventListener("click", () => {
+          open(trigger.dataset.gallery, Number(trigger.dataset.index));
+        });
+      });
+
+      lightbox.querySelectorAll("[data-close-lightbox]").forEach((node) => {
+        node.addEventListener("click", hide);
+      });
+      prev.addEventListener("click", () => step(-1));
+      next.addEventListener("click", () => step(1));
+
+      lightbox.addEventListener("click", (event) => {
+        if (event.target === lightbox || event.target === lightboxFrame) hide();
+      });
+
+      window.addEventListener("keydown", (event) => {
+        if (!lightbox.classList.contains("open")) return;
+        if (event.key === "Escape") hide();
+        if (event.key === "ArrowLeft") step(-1);
+        if (event.key === "ArrowRight") step(1);
+      });
+    })();
+
+  </script>
+
+  <script>
+    (() => {
+      const pageNavLinks = Array.from(document.querySelectorAll('.page-nav a[href^="#"]'));
+      if (!pageNavLinks.length) return;
+
+      const cleanUrl = window.location.pathname + window.location.search;
+
+      pageNavLinks.forEach((link) => {
+        const targetSelector = link.getAttribute('href');
+        if (!targetSelector || targetSelector === '#') return;
+
+        link.dataset.target = targetSelector;
+        link.setAttribute('href', cleanUrl);
+
+        link.addEventListener('click', (event) => {
+          const target = document.querySelector(link.dataset.target);
+          if (!target) return;
+
+          event.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+          if (window.history && typeof window.history.replaceState === 'function') {
+            window.history.replaceState(window.history.state, '', cleanUrl);
+          }
+        });
+      });
+    })();
+  </script>
+
+  <script>
+    (() => {
+      const projects = [
+        { file: "project-01.html", title: "Внешние коммуникации" },
+        { file: "project-02.html", title: "Внутренние коммуникации" },
+        { file: "project-03.html", title: "Бренд- и спецпроекты" },
+        { file: "project-04.html", title: "Полиграфия" },
+        { file: "project-07.html", title: "Lashes Beauty" },
+        { file: "project-05.html", title: "Щёлочь" },
+        { file: "project-06.html", title: "Любовь эмигранта" }
+      ];
+      const switcher = document.getElementById("projectSwitcher");
+      if (!switcher) return;
+      const currentFile = window.location.pathname.split("/").pop();
+      const currentIndex = projects.findIndex((project) => project.file === currentFile);
+      if (currentIndex === -1) return;
+      const prevProject = projects[(currentIndex - 1 + projects.length) % projects.length];
+      const nextProject = projects[(currentIndex + 1) % projects.length];
+      switcher.innerHTML = `
+        <a class="project-switcher-link" href="${prevProject.file}">
+          <span class="project-switcher-label">Предыдущий проект</span>
+          <span class="project-switcher-title">${prevProject.title}</span>
+        </a>
+        <a class="project-switcher-link" href="${nextProject.file}">
+          <span class="project-switcher-label">Следующий проект</span>
+          <span class="project-switcher-title">${nextProject.title}</span>
+        </a>
+      `;
+    })();
+  </script>
+
+  <script>
+    (() => {
+      const revealPage = () => document.documentElement.classList.remove("fonts-loading");
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(revealPage).catch(revealPage);
+      } else {
+        revealPage();
+      }
+    })();
+  </script>
+</body>
+</html>

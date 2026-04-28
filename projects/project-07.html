@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lashes Beauty — Леонид Остапчук</title>
+  <link rel="icon" type="image/webp" href="../assets/media/favicon.webp">
+  <script>document.documentElement.classList.add("fonts-loading");</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090909;
+      --paper: #101010;
+      --text: #f5f5f2;
+      --muted: #aaa9a3;
+      --line: rgba(255, 255, 255, 0.14);
+      --soft: #171717;
+      --accent: #6fb7ff;
+      --shadow: 0 16px 32px rgba(0, 0, 0, 0.35);
+      --shadow-hover: 0 18px 34px rgba(0, 0, 0, 0.42);
+      --font-body: "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-display: "Archivo", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-label: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+    * { box-sizing: border-box; }
+
+    html.fonts-loading body { opacity: 0; }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      opacity: 1;
+      transition: opacity 0.12s ease;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    .page {
+      width: min(980px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 48px 0 72px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    [id] {
+      scroll-margin-top: 24px;
+    }
+
+    .page-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+
+    .page-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 12px 24px;
+      margin: 0 0 0 auto;
+      width: fit-content;
+      max-width: 100%;
+    }
+
+    .page-nav a {
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      font-size: 14px;
+      line-height: 1;
+      text-decoration: none;
+      transition: color 0.2s ease;
+      font-family: var(--font-label);
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .page-nav a:hover {
+      color: var(--accent);
+    }
+
+    .back, .label {
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      font-size: 14px;
+      line-height: 1;
+      font-family: var(--font-label);
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .back:hover { color: var(--accent); }
+
+    .page-topbar .back,
+    .page-topbar .page-nav a {
+      font-size: 15px;
+      line-height: 1.2;
+      font-weight: 400;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 10px;
+      background: var(--soft);
+      color: var(--muted);
+      font-size: 13px;
+      text-wrap: pretty;
+      font-family: var(--font-body);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+    h1 {
+      margin: 0 0 20px;
+      font-size: clamp(36px, 6vw, 58px);
+      line-height: 0.92;
+      letter-spacing: 0.022em;
+      text-wrap: balance;
+      font-family: var(--font-display);
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+    .subtitle, p, li { color: var(--muted); text-wrap: pretty; }
+    .subtitle {
+      font-size: 16px;
+      margin: 0;
+    }
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .divider { height: 1px; background: var(--line); margin: 36px 0; }
+    .intro-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0;
+      margin-top: 28px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 180px minmax(0, 1fr);
+      gap: 28px;
+      align-items: start;
+    }
+    .wide-section {
+      display: grid;
+      grid-template-columns: 180px minmax(0, 1fr);
+      column-gap: 28px;
+      row-gap: 20px;
+      align-items: start;
+    }
+    .wide-content {
+      grid-column: 2 / 3;
+    }
+
+    .wide-content p {
+      margin: 0;
+    }
+
+    .wide-section > .label {
+      padding-top: 4px;
+    }
+    .wide-gallery {
+      grid-column: 1 / -1;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--bg);
+      padding: 18px;
+      margin-top: 0;
+    }
+    .print-gallery {
+      grid-column: 1 / -1;
+    }
+    .gallery-section-title {
+      margin: 0 0 14px;
+      font-size: 16px;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+    .before-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .identity-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .identity-grid .gallery-item:first-child {
+      grid-column: span 3;
+    }
+    .identity-grid .gallery-item:last-child {
+      grid-column: span 1;
+    }
+    .identity-grid .gallery-item:last-child .zoomable-card {
+      aspect-ratio: 1 / 1;
+    }
+    .patterns-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+      align-items: start;
+    }
+    .digital-gallery {
+      display: grid;
+      gap: 14px;
+    }
+    .digital-header {
+      display: grid;
+    }
+    .digital-cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .print-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 0;
+    }
+    .print-extra-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .brandbook-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 0;
+    }
+    .print-gallery {
+      margin-top: 0;
+    }
+    .patterns-label {
+      display: block;
+      margin: 14px 0 10px;
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+    .digital-gallery .patterns-label:first-child {
+      margin-top: 0;
+    }
+    .gallery-item { min-width: 0; }
+    .gallery-item strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+    .patterns-grid .gallery-item strong {
+      display: none;
+    }
+    .zoomable-card {
+      width: 100%;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      cursor: zoom-in;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .zoomable-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+    .zoomable-card.square {
+      aspect-ratio: 1 / 1;
+    }
+    .zoomable-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .gallery-note {
+      margin: 14px 0 0;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    h2 {
+      margin: 0 0 10px;
+      font-size: 24px;
+      letter-spacing: -0.025em;
+      color: var(--text);
+      text-wrap: balance;
+      font-family: var(--font-body);
+      font-weight: 700;
+    }
+    .divider + .grid,
+    .divider + .wide-section {
+      margin-top: 40px;
+    }
+    ul { margin: 0; padding-left: 18px; }
+    li + li { margin-top: 8px; }
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(17, 24, 39, 0.9);
+      z-index: 1200;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox-backdrop {
+      position: absolute;
+      inset: 0;
+    }
+    .lightbox-frame {
+      position: relative;
+      z-index: 1;
+      width: min(1400px, calc(100vw - 96px));
+      max-height: calc(100vh - 96px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox img {
+      max-width: min(88vw, 1400px);
+      max-height: 88vh;
+      width: auto;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+      background: var(--paper);
+    }
+    .lightbox-close,
+    .lightbox-nav {
+      position: absolute;
+      border: 0;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(6px);
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .lightbox-close:hover,
+    .lightbox-nav:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    .lightbox-close {
+      top: 24px;
+      right: 24px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      font-size: 24px;
+      line-height: 1;
+    }
+    .lightbox-nav {
+      top: 50%;
+      transform: translateY(-50%);
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      font-size: 28px;
+      line-height: 1;
+    }
+    .lightbox-nav.prev { left: 20px; }
+    .lightbox-nav.next { right: 20px; }
+    .lightbox-nav.hidden { display: none; }
+    .scroll-top,
+    .floating-back {
+      position: fixed;
+      width: 46px;
+      height: 46px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(20, 20, 20, 0.88);
+      color: var(--text);
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      z-index: 999;
+    }
+    .scroll-top {
+      right: 20px;
+      bottom: 20px;
+    }
+    .floating-back {
+      left: 20px;
+      top: 20px;
+    }
+    .scroll-top.visible,
+    .floating-back.visible {
+      opacity: 0.82;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .scroll-top:hover,
+    .floating-back:hover {
+      background: rgba(255, 255, 255, 0.12);
+      opacity: 0.96;
+      box-shadow: var(--shadow-hover);
+    }
+    @media (max-width: 860px) {
+      .page {
+        width: min(100% - 24px, 980px);
+        padding: 24px 0 56px;
+      }
+      .intro-grid,
+      .grid,
+      .wide-section {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .wide-content,
+      .wide-gallery {
+        grid-column: auto;
+      }
+      .identity-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .identity-grid .gallery-item:first-child {
+        grid-column: 1 / -1;
+      }
+      .identity-grid .gallery-item:last-child {
+        grid-column: 1 / 2;
+      }
+      .patterns-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .print-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .digital-cards {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .print-extra-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+      }
+      .brandbook-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .wide-gallery {
+        padding: 14px;
+        border-radius: 18px;
+      }
+      .zoomable-card {
+        border-radius: 14px;
+      }
+      .lightbox {
+        padding: 16px;
+      }
+      .lightbox-nav {
+        width: 44px;
+        height: 44px;
+      }
+      }
+    @media (max-width: 640px) {
+      .before-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .print-grid,
+      .brandbook-grid,
+      .patterns-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .identity-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .identity-grid .gallery-item:first-child {
+        grid-column: 1 / -1;
+      }
+      .identity-grid .gallery-item:last-child {
+        grid-column: 1 / 2;
+      }
+      .digital-cards {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+      }
+      .print-extra-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+      }
+    }
+    @media (max-width: 480px) {
+      .before-grid,
+      .patterns-grid,
+      .print-grid,
+      .brandbook-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .identity-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+      .identity-grid .gallery-item:first-child {
+        grid-column: 1 / -1;
+      }
+      .identity-grid .gallery-item:last-child {
+        grid-column: 1 / 2;
+      }
+      .digital-cards {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+      }
+      .print-extra-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+      }
+      .lightbox {
+        padding: 16px;
+      }
+      .lightbox-frame {
+        width: min(100vw - 32px, 1400px);
+        max-height: calc(100vh - 32px);
+      }
+      .lightbox-nav {
+        width: 44px;
+        height: 44px;
+      }
+      .lightbox-nav.prev { left: 8px; }
+      .lightbox-nav.next { right: 8px; }
+    }
+    @media (max-width: 400px) {
+      .before-grid,
+      .patterns-grid,
+      .print-grid,
+      .brandbook-grid {
+        grid-template-columns: 1fr;
+      }
+      .identity-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+      .identity-grid .gallery-item:first-child {
+        grid-column: 1 / -1;
+      }
+      .identity-grid .gallery-item:last-child {
+        grid-column: 1 / 2;
+      }
+      .digital-cards,
+      .print-extra-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+  
+
+    @media (max-width: 720px) {
+      .page-topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .page-nav {
+        justify-content: flex-start;
+        gap: 8px 16px;
+        margin-right: 0;
+      }
+    }
+
+    .project-switcher-wrap {
+      margin-top: 44px;
+      padding-top: 32px;
+      border-top: 1px solid var(--line);
+    }
+
+    .project-switcher {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .project-switcher-link {
+      display: grid;
+      gap: 8px;
+      padding: 18px 20px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: var(--soft);
+      transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+    }
+
+    .project-switcher-link:hover {
+      border-color: rgba(255, 255, 255, 0.34);
+      background: rgba(255, 255, 255, 0.04);
+      transform: translateY(-1px);
+    }
+
+    .project-switcher-label {
+      color: var(--muted);
+      font-size: 12px;
+      font-family: var(--font-label);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .project-switcher-title {
+      font-size: 20px;
+      line-height: 1.15;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-wrap: balance;
+    }
+
+    @media (max-width: 720px) {
+      .project-switcher {
+        grid-template-columns: 1fr;
+      }
+    }
+
+</style>
+</head>
+<body>
+  <main class="page">
+    <div class="page-topbar">
+      <a class="back" href="../index.html">← Назад к резюме</a>
+      <nav class="page-nav" aria-label="Навигация по проекту"><a href="#before">До ребрендинга</a><a href="#identity">Айдентика</a><a href="#digital">Цифровые носители</a><a href="#print">Полиграфия</a><a href="#brandbook">Брендбук</a></nav>
+    </div>
+      <h1>Lashes Beauty</h1>
+      <div class="intro-grid" id="about">
+        <div>
+          <p class="subtitle">Ребрендинг сети салонов красоты Lashes Beauty. Проект выполнялся в команде из трех человек: графический дизайнер, мультидисциплинарный дизайнер и арт-директор. Моя зона ответственности — участие в разработке цельного визуального языка бренда и адаптация айдентики на носители.</p>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <section class="wide-section" id="before">
+        <div class="label">До ребрендинга</div>
+        <div class="wide-content">
+          <p>У бренда не было цельной визуальной системы: отсутствовали брендбук, единые правила по цвету, типографике и стилю, а также типовые примеры использования айдентики. Из-за этого коммуникационные материалы получались разрозненными, а постановка задач дизайнерам усложнялась. Задачей ребрендинга было собрать целостную систему бренда и зафиксировать ее в брендбуке.</p>
+        </div>
+        <div class="wide-gallery">
+          <div class="before-grid">
+          <div class="gallery-item">
+            <strong>Логотип</strong>
+            <article class="zoomable-card square zoomable" data-gallery="before" data-index="0" data-src="../assets/media/image-0118.webp">
+              <img src="../assets/media/image-0118.webp" alt="Логотип до ребрендинга">
+            </article>
+          </div>
+          <div class="gallery-item">
+            <strong>Сторис</strong>
+            <article class="zoomable-card square zoomable" data-gallery="before" data-index="1" data-src="../assets/media/image-0119.webp">
+              <img src="../assets/media/image-0119.webp" alt="Digital до ребрендинга">
+            </article>
+          </div>
+          <div class="gallery-item">
+            <strong>Полиграфия</strong>
+            <article class="zoomable-card square zoomable" data-gallery="before" data-index="2" data-src="../assets/media/image-0120.webp">
+              <img src="../assets/media/image-0120.webp" alt="Print до ребрендинга">
+            </article>
+          </div>
+        </div>
+          <p class="gallery-note">Примеры старого логотипа, цифрового и печатного носителя.</p>
+        </div>
+      </section>
+
+    <div class="divider"></div>
+
+      <section class="wide-section" id="identity">
+        <div class="label">Айдентика</div>
+        <div class="wide-content">
+          <h2>Логотип и паттерны</h2>
+          <p>Обновленные логотип и паттерны как основа новой визуальной системы бренда.</p>
+        </div>
+        <div class="wide-gallery">
+          <div class="identity-grid">
+          <div class="gallery-item">
+            <strong>Логотип</strong>
+            <article class="zoomable-card zoomable" data-gallery="identity" data-index="0" data-src="../assets/media/image-0121.webp">
+              <img src="../assets/media/image-0121.webp" alt="Логотип после ребрендинга">
+            </article>
+          </div>
+          <div class="gallery-item">
+            <strong>Аватарка</strong>
+            <article class="zoomable-card zoomable" data-gallery="identity" data-index="1" data-src="../assets/media/image-0122.webp">
+              <img src="../assets/media/image-0122.webp" alt="Эмблема после ребрендинга">
+            </article>
+          </div>
+        </div>
+        <strong class="patterns-label">Фирменные паттерны</strong>
+        <div class="patterns-grid">
+          <div class="gallery-item">
+            <article class="zoomable-card square zoomable" data-gallery="patterns" data-index="0" data-src="../assets/media/image-0123.webp">
+              <img src="../assets/media/image-0123.webp" alt="Паттерн 1">
+            </article>
+          </div>
+          <div class="gallery-item">
+            <article class="zoomable-card square zoomable" data-gallery="patterns" data-index="1" data-src="../assets/media/image-0124.webp">
+              <img src="../assets/media/image-0124.webp" alt="Паттерн 2">
+            </article>
+          </div>
+          <div class="gallery-item">
+            <article class="zoomable-card square zoomable" data-gallery="patterns" data-index="2" data-src="../assets/media/image-0125.webp">
+              <img src="../assets/media/image-0125.webp" alt="Паттерн 3">
+            </article>
+          </div>
+          <div class="gallery-item">
+            <article class="zoomable-card square zoomable" data-gallery="patterns" data-index="3" data-src="../assets/media/image-0126.webp">
+              <img src="../assets/media/image-0126.webp" alt="Паттерн 4">
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+      <section class="wide-section" id="digital">
+      <div class="label">Цифровые носители</div>
+        <div class="wide-content">
+        <h2>Внедрение в цифровые носители</h2>
+          <p>Оформление для страницы в Яндекс Картах и других социальных сетях. Адаптация айдентики под регулярные цифровые сценарии бренда.</p>
+        </div>
+      <div class="wide-gallery">
+        <div class="digital-gallery">
+          <strong class="patterns-label">Оформление профиля В Контакте</strong>
+          <div class="digital-header">
+            <article class="zoomable-card zoomable" data-gallery="digital" data-index="0" data-src="../assets/media/image-0127.webp">
+              <img src="../assets/media/image-0127.webp" alt="Шапка VK">
+            </article>
+          </div>
+          <strong class="patterns-label">Оформление профиля в Яндекс Картах</strong>
+          <div class="digital-cards">
+            <article class="zoomable-card zoomable" data-gallery="digital" data-index="1" data-src="../assets/media/image-0128.webp">
+              <img src="../assets/media/image-0128.webp" alt="Яндекс Карты 1">
+            </article>
+            <article class="zoomable-card zoomable" data-gallery="digital" data-index="2" data-src="../assets/media/image-0129.webp">
+              <img src="../assets/media/image-0129.webp" alt="Яндекс Карты 2">
+            </article>
+            <article class="zoomable-card zoomable" data-gallery="digital" data-index="3" data-src="../assets/media/image-0130.webp">
+              <img src="../assets/media/image-0130.webp" alt="Digital-носитель Lashes Beauty">
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+      <section class="wide-section" id="print">
+      <div class="label">Полиграфия</div>
+        <div class="wide-content">
+        <h2>Внедрение в печатные материалы</h2>
+          <p>Оформление листовок, буклетов, сертификатов и других печатных носителей. Адаптация айдентики для офлайн-материалов бренда.</p>
+        </div>
+      <div class="print-gallery">
+        <div class="print-grid">
+          <div class="gallery-item">
+            <article class="zoomable-card zoomable" data-gallery="print" data-index="0" data-src="../assets/media/image-0131.webp">
+              <img src="../assets/media/image-0131.webp" alt="Печатная продукция 1">
+            </article>
+          </div>
+          <div class="gallery-item">
+            <article class="zoomable-card zoomable" data-gallery="print" data-index="1" data-src="../assets/media/image-0132.webp">
+              <img src="../assets/media/image-0132.webp" alt="Печатная продукция 2">
+            </article>
+          </div>
+        </div>
+        <div class="print-extra-grid">
+          <article class="zoomable-card zoomable" data-gallery="print" data-index="2" data-src="../assets/media/image-0133.webp">
+            <img src="../assets/media/image-0133.webp" alt="Плакат Lashes Beauty 1">
+          </article>
+          <article class="zoomable-card zoomable" data-gallery="print" data-index="3" data-src="../assets/media/image-0134.webp">
+            <img src="../assets/media/image-0134.webp" alt="Плакат Lashes Beauty 2">
+          </article>
+          <article class="zoomable-card zoomable" data-gallery="print" data-index="4" data-src="../assets/media/image-0135.webp">
+            <img src="../assets/media/image-0135.webp" alt="Плакат Lashes Beauty 3">
+          </article>
+          <article class="zoomable-card zoomable" data-gallery="print" data-index="5" data-src="../assets/media/image-0136.webp">
+            <img src="../assets/media/image-0136.webp" alt="Плакат Lashes Beauty 4">
+          </article>
+          <article class="zoomable-card zoomable" data-gallery="print" data-index="6" data-src="../assets/media/image-0137.webp">
+            <img src="../assets/media/image-0137.webp" alt="Стикеры Lashes Beauty">
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+      <section class="wide-section" id="brandbook">
+      <div class="label">Брендбук</div>
+        <div class="wide-content">
+        <h2>Брендбук как финальный результат</h2>
+        <p>Финальной точкой кейса стал брендбук, в котором зафиксирована визуальная система Lashes Beauty и показано, как айдентика работает в онлайн- и офлайн-среде.</p>
+        </div>
+      <div class="print-gallery">
+        <div class="brandbook-grid">
+          <article class="zoomable-card zoomable" data-gallery="brandbook" data-index="0" data-src="../assets/media/image-0138.webp">
+            <img src="../assets/media/image-0138.webp" alt="Брендбук Lashes Beauty 1">
+          </article>
+          <article class="zoomable-card zoomable" data-gallery="brandbook" data-index="1" data-src="../assets/media/image-0139.webp">
+            <img src="../assets/media/image-0139.webp" alt="Брендбук Lashes Beauty 2">
+          </article>
+          <article class="zoomable-card zoomable" data-gallery="brandbook" data-index="2" data-src="../assets/media/image-0140.webp">
+            <img src="../assets/media/image-0140.webp" alt="Брендбук Lashes Beauty 3">
+          </article>
+          <article class="zoomable-card zoomable" data-gallery="brandbook" data-index="3" data-src="../assets/media/image-0141.webp">
+            <img src="../assets/media/image-0141.webp" alt="Брендбук Lashes Beauty 4">
+          </article>
+        </div>
+      </div>
+    </section>
+    <div class="project-switcher-wrap">
+      <nav class="project-switcher" id="projectSwitcher" aria-label="Переход между проектами"></nav>
+    </div>
+  </main>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox-backdrop" data-close-lightbox></div>
+    <div class="lightbox-frame">
+      <button class="lightbox-nav prev" id="lightboxPrev" type="button" aria-label="Предыдущее">&#8249;</button>
+      <img id="lightboxImage" src="" alt="">
+      <button class="lightbox-nav next" id="lightboxNext" type="button" aria-label="Следующее">&#8250;</button>
+    </div>
+    <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Закрыть" data-close-lightbox>&times;</button>
+  </div>
+
+  <button class="scroll-top" id="scrollTopButton" type="button" aria-label="Наверх">&#8593;</button>
+  <button class="floating-back" id="floatingBackButton" type="button" aria-label="Назад">&#8592;</button>
+  <script>
+    (() => {
+      const button = document.getElementById("scrollTopButton");
+      const backButton = document.getElementById("floatingBackButton");
+      if (!button) return;
+      const toggleButton = () => {
+        const isVisible = window.scrollY > 320;
+        button.classList.toggle("visible", isVisible);
+        if (backButton) backButton.classList.toggle("visible", isVisible);
+      };
+      window.addEventListener("scroll", toggleButton, { passive: true });
+      toggleButton();
+      button.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      if (backButton) {
+        backButton.addEventListener("click", () => {
+          window.location.href = "../index.html";
+        });
+      }
+    })();
+
+    (() => {
+        const lightbox = document.getElementById("lightbox");
+        const lightboxFrame = lightbox.querySelector(".lightbox-frame");
+        const lightboxImage = document.getElementById("lightboxImage");
+        const closeButton = document.getElementById("lightboxClose");
+      const prevButton = document.getElementById("lightboxPrev");
+      const nextButton = document.getElementById("lightboxNext");
+      if (!lightbox || !lightboxImage || !closeButton || !prevButton || !nextButton) return;
+
+      const galleries = {};
+      document.querySelectorAll(".zoomable").forEach((item) => {
+        const gallery = item.dataset.gallery || "default";
+        if (!galleries[gallery]) galleries[gallery] = [];
+        galleries[gallery].push(item.dataset.src);
+      });
+
+      let currentGallery = null;
+      let currentIndex = 0;
+
+      const updateNav = () => {
+        const items = galleries[currentGallery] || [];
+        const hidden = items.length <= 1;
+        prevButton.classList.toggle("hidden", hidden);
+        nextButton.classList.toggle("hidden", hidden);
+      };
+
+      const openLightbox = (gallery, index) => {
+        currentGallery = gallery;
+        currentIndex = index;
+        const items = galleries[gallery] || [];
+        lightboxImage.src = items[index] || "";
+        lightbox.classList.add("open");
+        lightbox.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        updateNav();
+      };
+
+      const closeLightbox = () => {
+        lightbox.classList.remove("open");
+        lightbox.setAttribute("aria-hidden", "true");
+        lightboxImage.src = "";
+        document.body.style.overflow = "";
+      };
+
+      const move = (direction) => {
+        const items = galleries[currentGallery] || [];
+        if (items.length <= 1) return;
+        currentIndex = (currentIndex + direction + items.length) % items.length;
+        lightboxImage.src = items[currentIndex];
+      };
+
+      document.querySelectorAll(".zoomable").forEach((item) => {
+        item.addEventListener("click", () => {
+          const gallery = item.dataset.gallery || "default";
+          const index = Number(item.dataset.index || 0);
+          openLightbox(gallery, index);
+        });
+      });
+
+        lightbox.querySelectorAll("[data-close-lightbox]").forEach((node) => {
+          node.addEventListener("click", closeLightbox);
+        });
+        prevButton.addEventListener("click", () => move(-1));
+        nextButton.addEventListener("click", () => move(1));
+
+        lightbox.addEventListener("click", (event) => {
+          if (event.target === lightbox || event.target === lightboxFrame) closeLightbox();
+        });
+
+      document.addEventListener("keydown", (event) => {
+        if (!lightbox.classList.contains("open")) return;
+        if (event.key === "Escape") closeLightbox();
+        if (event.key === "ArrowLeft") move(-1);
+        if (event.key === "ArrowRight") move(1);
+      });
+    })();
+  </script>
+
+  <script>
+    (() => {
+      const pageNavLinks = Array.from(document.querySelectorAll('.page-nav a[href^="#"]'));
+      if (!pageNavLinks.length) return;
+
+      const cleanUrl = window.location.pathname + window.location.search;
+
+      pageNavLinks.forEach((link) => {
+        const targetSelector = link.getAttribute('href');
+        if (!targetSelector || targetSelector === '#') return;
+
+        link.dataset.target = targetSelector;
+        link.setAttribute('href', cleanUrl);
+
+        link.addEventListener('click', (event) => {
+          const target = document.querySelector(link.dataset.target);
+          if (!target) return;
+
+          event.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+          if (window.history && typeof window.history.replaceState === 'function') {
+            window.history.replaceState(window.history.state, '', cleanUrl);
+          }
+        });
+      });
+    })();
+  </script>
+
+  <script>
+    (() => {
+      const projects = [
+        { file: "project-01.html", title: "Внешние коммуникации" },
+        { file: "project-02.html", title: "Внутренние коммуникации" },
+        { file: "project-03.html", title: "Бренд- и спецпроекты" },
+        { file: "project-04.html", title: "Полиграфия" },
+        { file: "project-07.html", title: "Lashes Beauty" },
+        { file: "project-05.html", title: "Щёлочь" },
+        { file: "project-06.html", title: "Любовь эмигранта" }
+      ];
+      const switcher = document.getElementById("projectSwitcher");
+      if (!switcher) return;
+      const currentFile = window.location.pathname.split("/").pop();
+      const currentIndex = projects.findIndex((project) => project.file === currentFile);
+      if (currentIndex === -1) return;
+      const prevProject = projects[(currentIndex - 1 + projects.length) % projects.length];
+      const nextProject = projects[(currentIndex + 1) % projects.length];
+      switcher.innerHTML = `
+        <a class="project-switcher-link" href="${prevProject.file}">
+          <span class="project-switcher-label">Предыдущий проект</span>
+          <span class="project-switcher-title">${prevProject.title}</span>
+        </a>
+        <a class="project-switcher-link" href="${nextProject.file}">
+          <span class="project-switcher-label">Следующий проект</span>
+          <span class="project-switcher-title">${nextProject.title}</span>
+        </a>
+      `;
+    })();
+  </script>
+
+  <script>
+    (() => {
+      const revealPage = () => document.documentElement.classList.remove("fonts-loading");
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(revealPage).catch(revealPage);
+      } else {
+        revealPage();
+      }
+    })();
+  </script>
+</body>
+</html>

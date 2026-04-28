@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Внутренние продукты и коммуникации — Леонид Остапчук</title>
+  <link rel="icon" type="image/webp" href="../assets/media/favicon.webp">
+  <script>document.documentElement.classList.add("fonts-loading");</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090909;
+      --paper: #101010;
+      --text: #f5f5f2;
+      --muted: #aaa9a3;
+      --line: rgba(255, 255, 255, 0.14);
+      --soft: #171717;
+      --accent: #6fb7ff;
+      --shadow: 0 18px 44px rgba(0, 0, 0, 0.35);
+      --font-body: "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-display: "Archivo", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-label: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    * { box-sizing: border-box; }
+
+    html.fonts-loading body { opacity: 0; }
+
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      opacity: 1;
+      transition: opacity 0.12s ease;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(980px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 48px 0 72px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    [id] {
+      scroll-margin-top: 24px;
+    }
+
+    .page-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+
+    .page-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 12px 24px;
+      margin: 0 0 0 auto;
+      width: fit-content;
+      max-width: 100%;
+    }
+
+    .page-nav a {
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      font-size: 14px;
+      line-height: 1;
+      text-decoration: none;
+      transition: color 0.2s ease;
+      font-family: var(--font-label);
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .page-nav a:hover {
+      color: var(--accent);
+    }
+
+
+    .back,
+    .section-kicker,
+    .placeholder-note {
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      font-size: 14px;
+      line-height: 1;
+      font-family: var(--font-label);
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .back:hover { color: var(--accent); }
+
+    .page-topbar .back,
+    .page-topbar .page-nav a {
+      font-size: 15px;
+      line-height: 1.2;
+      font-weight: 400;
+    }
+
+    .chip,
+    .tag {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 10px;
+      background: var(--soft);
+      color: var(--muted);
+      font-size: 13px;
+      font-family: var(--font-body);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    h1 {
+      margin: 0 0 20px;
+      font-size: clamp(36px, 6vw, 58px);
+      line-height: 0.92;
+      letter-spacing: 0.022em;
+      text-wrap: balance;
+      font-family: var(--font-display);
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 22px;
+      letter-spacing: -0.025em;
+      text-wrap: balance;
+      font-family: var(--font-body);
+      font-weight: 700;
+    }
+
+    p,
+    li,
+    .subtitle {
+      color: var(--muted);
+    }
+
+    .subtitle {
+      max-width: 760px;
+      font-size: 16px;
+      margin: 0;
+      text-wrap: pretty;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    p,
+    li,
+    .section-kicker,
+    .placeholder-note,
+    .tag {
+      text-wrap: pretty;
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--line);
+      margin: 36px 0;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 180px minmax(0, 1fr);
+      gap: 28px;
+      align-items: start;
+      margin-bottom: 24px;
+    }
+
+    .section-head p {
+      margin: 0;
+    }
+
+    .section-kicker {
+      padding-top: 4px;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0;
+      align-items: start;
+      margin-top: 28px;
+    }
+
+    .hero-image {
+      width: 100%;
+      display: block;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      margin-top: 10px;
+      background: var(--soft);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+
+
+    .platform-banners {
+      display: grid;
+      gap: 16px;
+      margin-top: 0;
+    }
+
+    .grid-3x2 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 0;
+    }
+
+    .platform-banner-card {
+      position: relative;
+      aspect-ratio: 17 / 6;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--paper);
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .platform-banner-trigger {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      padding: 0;
+      margin: 0;
+      background: transparent;
+      display: block;
+      cursor: zoom-in;
+    }
+
+    .message-trigger {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      padding: 0;
+      margin: 0;
+      background: transparent;
+      display: block;
+      cursor: zoom-in;
+    }
+
+    .platform-banner-image {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .message-card {
+      aspect-ratio: 16 / 9;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--paper);
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .message-image {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .campaign-media-card {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--paper);
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .campaign-media-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(55, 53, 47, 0.08);
+    }
+
+    .campaign-media-trigger {
+      width: 100%;
+      border: 0;
+      padding: 0;
+      margin: 0;
+      background: transparent;
+      display: block;
+      cursor: zoom-in;
+    }
+
+    .campaign-media-image {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .placeholder-card,
+    .reward-card,
+    .mosaic-card {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--paper);
+    }
+
+    .placeholder-card strong,
+    .reward-card strong,
+    .mosaic-card strong {
+      display: block;
+      font-size: 17px;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .placeholder-card span,
+    .reward-card span,
+    .mosaic-card span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .section-block + .section-block {
+      margin-top: 40px;
+      padding-top: 40px;
+      border-top: 1px solid var(--line);
+    }
+
+    .divider + .section-block {
+      margin-top: 40px;
+    }
+
+    .section-block.no-divider + .section-block.no-divider,
+    .section-block.no-divider + .section-block {
+      margin-top: 40px;
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    .showcase-grid,
+    .campaign-grid,
+    .certificate-grid,
+    .avatar-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 0;
+    }
+
+    .avatar-card {
+      aspect-ratio: 1 / 1;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--paper);
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .avatar-trigger {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      padding: 0;
+      margin: 0;
+      background: transparent;
+      display: block;
+      cursor: zoom-in;
+    }
+
+    .avatar-image {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .platform-banner-trigger:hover .hero-image,
+    .platform-banner-card:hover,
+    .message-card:hover,
+    .avatar-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(55, 53, 47, 0.08);
+    }
+
+    .showcase-grid.wide {
+      grid-template-columns: 1.3fr 1fr 1fr;
+    }
+
+    .placeholder-card {
+      min-height: 180px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .placeholder-card.tall {
+      min-height: 260px;
+    }
+
+    .reward-system {
+      display: grid;
+      gap: 16px;
+      margin-top: 0;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--bg);
+    }
+
+    .reward-system > .platform-banner-trigger {
+      width: min(100%, 980px);
+      margin: 0 auto;
+    }
+
+    .reward-hero {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .reward-card {
+      min-height: 200px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .reward-card.large {
+      min-height: 280px;
+    }
+
+    .reward-categories {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 28px;
+      align-items: start;
+    }
+
+    .reward-category {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .reward-category-label {
+      margin: 0;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.4;
+      font-weight: 400;
+      letter-spacing: 0;
+      white-space: nowrap;
+    }
+
+    .mosaic-card {
+      min-height: 0;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      box-shadow: none;
+      align-self: start;
+    }
+
+    .mosaic-card strong {
+      display: block;
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0;
+      line-height: 1.4;
+    }
+
+    .reward-mini-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      padding: 18px;
+      margin-top: 0;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--paper);
+      align-items: start;
+    }
+
+    .reward-mini-slot {
+      aspect-ratio: 1 / 1;
+      border: 0;
+      border-radius: 50%;
+      background: transparent;
+      padding: 0;
+      overflow: hidden;
+      cursor: default;
+      transition: none;
+      pointer-events: none;
+    }
+
+    .reward-mini-image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .reward-summary {
+      margin-top: 16px;
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    li + li {
+      margin-top: 8px;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
+      background: rgba(17, 24, 39, 0.9);
+      z-index: 1000;
+    }
+
+    .lightbox.is-open {
+      display: flex;
+    }
+
+    .lightbox-backdrop {
+      position: absolute;
+      inset: 0;
+    }
+
+    .lightbox-frame {
+      position: relative;
+      z-index: 1;
+      width: min(1400px, calc(100vw - 96px));
+      max-height: calc(100vh - 96px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-media {
+      max-width: 100%;
+      max-height: calc(100vh - 96px);
+      display: block;
+      border-radius: 18px;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+      background: var(--paper);
+    }
+
+    .lightbox-media.is-transparent-media {
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .lightbox-control {
+      position: absolute;
+      z-index: 2;
+      border: 0;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+    }
+
+    .lightbox-close {
+      top: 20px;
+      right: 20px;
+      position: fixed;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    .lightbox-prev {
+      left: 24px;
+    }
+
+    .lightbox-next {
+      right: 24px;
+    }
+
+    .lightbox-prev,
+    .lightbox-next {
+      top: 50%;
+      transform: translateY(-50%);
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    @media (max-width: 1000px) {
+      .reward-hero,
+      .showcase-grid.wide {
+        grid-template-columns: 1fr;
+      }
+
+      .showcase-grid,
+      .grid-3x2,
+      .campaign-grid,
+      .certificate-grid,
+      .avatar-grid,
+      .reward-categories {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+
+      .scroll-top,
+      .floating-back {
+        right: 14px;
+        bottom: 14px;
+        width: 42px;
+        height: 42px;
+      }
+
+      .floating-back {
+        left: 14px;
+        top: 14px;
+        right: auto;
+        bottom: auto;
+      }
+
+      .page {
+        width: min(100% - 24px, 980px);
+        padding: 24px 0 56px;
+      }
+
+        .section-head,
+      .intro-grid,
+      .showcase-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-3x2,
+      .campaign-grid,
+      .certificate-grid,
+      .avatar-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .reward-categories {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 14px;
+      }
+
+      .reward-system {
+        gap: 12px;
+        padding: 14px;
+        border-radius: 18px;
+      }
+
+      .reward-system > .platform-banner-trigger {
+        width: min(100%, 620px);
+      }
+
+      .mosaic-card strong {
+        margin-bottom: 6px;
+        font-size: 13px;
+        line-height: 1.35;
+      }
+
+      .reward-mini-grid {
+        gap: 8px;
+        padding: 10px;
+        border-radius: 16px;
+      }
+
+      .placeholder-card,
+      .reward-card,
+      .mosaic-card,
+      .reward-summary {
+        border-radius: 14px;
+      }
+
+      .platform-banner-card,
+      .message-card,
+      .campaign-media-card,
+      .avatar-card {
+        border-radius: 12px;
+      }
+
+      .campaign-media-card {
+        border-radius: 14px;
+      }
+
+      .lightbox {
+        padding: 16px;
+      }
+
+      .lightbox-frame {
+        width: min(100vw - 32px, 1400px);
+        max-height: calc(100vh - 32px);
+      }
+
+      .lightbox-media {
+        max-height: calc(100vh - 32px);
+      }
+
+      .lightbox-prev {
+        left: 8px;
+      }
+
+      .lightbox-next {
+        right: 8px;
+      }
+
+      .lightbox-close,
+      .lightbox-prev,
+      .lightbox-next {
+        width: 44px;
+        height: 44px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .campaign-grid,
+      .certificate-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .reward-categories {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .reward-system {
+        gap: 10px;
+        padding: 12px;
+        border-radius: 16px;
+      }
+
+      .reward-system > .platform-banner-trigger {
+        width: min(100%, 520px);
+      }
+
+      .reward-mini-grid {
+        gap: 6px;
+        padding: 8px;
+        border-radius: 14px;
+      }
+
+      .mosaic-card strong {
+        font-size: 12px;
+        margin-bottom: 5px;
+      }
+
+      .campaign-media-card,
+      .message-card,
+      .avatar-card {
+        border-radius: 10px;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .campaign-grid,
+      .certificate-grid,
+      .reward-categories {
+        grid-template-columns: 1fr;
+      }
+
+      .reward-system > .platform-banner-trigger {
+        width: min(100%, 420px);
+      }
+    }
+  
+    .scroll-top,
+    .floating-back {
+      position: fixed;
+      width: 46px;
+      height: 46px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(20, 20, 20, 0.88);
+      color: var(--text);
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 0 12px 24px rgba(55, 53, 47, 0.08);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      z-index: 999;
+    }
+
+    .scroll-top {
+      right: 20px;
+      bottom: 20px;
+    }
+
+    .floating-back {
+      left: 20px;
+      top: 20px;
+    }
+
+    .scroll-top.visible,
+    .floating-back.visible {
+      opacity: 0.82;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .scroll-top:hover,
+    .floating-back:hover {
+      background: rgba(255, 255, 255, 0.12);
+      opacity: 0.96;
+      box-shadow: 0 18px 34px rgba(0, 0, 0, 0.42);
+    }
+
+  
+
+    @media (max-width: 720px) {
+      .page-topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .page-nav {
+        justify-content: flex-start;
+        gap: 8px 16px;
+        margin-right: 0;
+      }
+    }
+
+    .project-switcher-wrap {
+      margin-top: 44px;
+      padding-top: 32px;
+      border-top: 1px solid var(--line);
+    }
+
+    .project-switcher {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .project-switcher-link {
+      display: grid;
+      gap: 8px;
+      padding: 18px 20px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: var(--soft);
+      transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+    }
+
+    .project-switcher-link:hover {
+      border-color: rgba(255, 255, 255, 0.34);
+      background: rgba(255, 255, 255, 0.04);
+      transform: translateY(-1px);
+    }
+
+    .project-switcher-label {
+      color: var(--muted);
+      font-size: 12px;
+      font-family: var(--font-label);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .project-switcher-title {
+      font-size: 20px;
+      line-height: 1.15;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-wrap: balance;
+    }
+
+    @media (max-width: 720px) {
+      .project-switcher {
+        grid-template-columns: 1fr;
+      }
+    }
+
+</style>
+</head>
+<body>
+  <main class="page">
+    <div class="page-topbar">
+      <a class="back" href="../index.html">← Назад к резюме</a>
+      <nav class="page-nav" aria-label="Навигация по проекту"><a href="#platform">Платформа</a><a href="#rewards">Награды</a><a href="#avatars">Аватарки</a></nav>
+    </div>
+    <h1>Внутренние коммуникации</h1>
+    <div class="intro-grid" id="about">
+      <div>
+        <p class="subtitle">Внутренние коммуникации Эквио: обновление визуальных материалов платформы, разработка системы наград и баннеров для новостной ленты.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <section class="section-block no-divider" id="platform">
+      <div class="section-head">
+        <div class="section-kicker">Платформа</div>
+        <div>
+          <h3>Платформа Эквио</h3>
+          <p>Главная страница платформы Эквио с баннером и заглушками обучающих курсов.</p>
+        </div>
+      </div>
+        <button class="platform-banner-trigger" type="button" data-gallery="platform-screen" data-full="../assets/media/image-0033.webp" data-alt="Главная страница платформы Эквио" style="margin-top: 0;">
+        <img class="hero-image" src="../assets/media/image-0033.webp" alt="Главная страница платформы Эквио">
+      </button>
+    </section>
+
+    <section class="section-block no-divider">
+      <div class="section-head">
+        <div class="section-kicker">Платформа</div>
+        <div>
+          <h3>Баннеры для главной страницы</h3>
+          <p>Горизонтальные баннеры для ротации на главной странице.</p>
+        </div>
+      </div>
+      <div class="platform-banners">
+        <div class="platform-banner-card">
+          <button class="platform-banner-trigger" type="button" data-gallery="platform-banners" data-full="../assets/media/image-0034.webp" data-alt="Баннер для главной платформы Эквио 1">
+            <img class="platform-banner-image" src="../assets/media/image-0034.webp" alt="Баннер для главной платформы Эквио 1">
+          </button>
+        </div>
+        <div class="platform-banner-card">
+          <button class="platform-banner-trigger" type="button" data-gallery="platform-banners" data-full="../assets/media/image-0035.webp" data-alt="Баннер для главной платформы Эквио 3">
+            <img class="platform-banner-image" src="../assets/media/image-0035.webp" alt="Баннер для главной платформы Эквио 3">
+          </button>
+        </div>
+      </div>
+      <div class="section-head" style="margin-top: 40px;">
+        <div class="section-kicker">Платформа</div>
+        <div>
+          <h3>Баннеры для сообщений и медиатеки</h3>
+          <p>Баннеры для новостей, поздравлений, событий и внутренних анонсов.</p>
+        </div>
+      </div>
+      <div class="grid-3x2">
+        <div class="message-card">
+          <button class="message-trigger" type="button" data-gallery="messages" data-full="../assets/media/image-0036.webp" data-alt="Баннер для раздела сообщений 1">
+            <img class="message-image" src="../assets/media/image-0036.webp" alt="Баннер для раздела сообщений 1">
+          </button>
+        </div>
+        <div class="message-card">
+          <button class="message-trigger" type="button" data-gallery="messages" data-full="../assets/media/image-0037.webp" data-alt="Баннер для раздела сообщений 2">
+            <img class="message-image" src="../assets/media/image-0037.webp" alt="Баннер для раздела сообщений 2">
+          </button>
+        </div>
+        <div class="message-card">
+          <button class="message-trigger" type="button" data-gallery="messages" data-full="../assets/media/image-0038.webp" data-alt="Баннер для раздела сообщений 3">
+            <img class="message-image" src="../assets/media/image-0038.webp" alt="Баннер для раздела сообщений 3">
+          </button>
+        </div>
+        <div class="message-card">
+          <button class="message-trigger" type="button" data-gallery="messages" data-full="../assets/media/image-0039.webp" data-alt="Баннер для раздела сообщений 4">
+            <img class="message-image" src="../assets/media/image-0039.webp" alt="Баннер для раздела сообщений 4">
+          </button>
+        </div>
+        <div class="message-card">
+          <button class="message-trigger" type="button" data-gallery="messages" data-full="../assets/media/image-0040.webp" data-alt="Баннер для раздела сообщений 5">
+            <img class="message-image" src="../assets/media/image-0040.webp" alt="Баннер для раздела сообщений 5">
+          </button>
+        </div>
+        <div class="message-card">
+          <button class="message-trigger" type="button" data-gallery="messages" data-full="../assets/media/image-0041.webp" data-alt="Баннер для раздела сообщений 6">
+            <img class="message-image" src="../assets/media/image-0041.webp" alt="Баннер для раздела сообщений 6">
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="section-block" id="rewards">
+      <div class="section-head">
+        <div class="section-kicker">Награды</div>
+        <div>
+          <h3>Система наград</h3>
+          <p>Внутренняя система наград, включающая более 100 ачивок.</p>
+        </div>
+      </div>
+
+      <div class="reward-system">
+        <button class="platform-banner-trigger" type="button" data-gallery="rewards-screen" data-full="../assets/media/image-0042.webp" data-alt="Система наград Эквио">
+          <img class="hero-image" src="../assets/media/image-0042.webp" alt="Система наград Эквио">
+        </button>
+        <div class="reward-categories">
+          <div class="reward-category">
+            <p class="reward-category-label">От гендиректора</p>
+            <div class="reward-mini-grid">
+              <button class="reward-mini-slot" type="button" data-gallery="reward-ceo" data-full="../assets/media/image-0043.webp" data-alt="Награда от гендиректора 1">
+                <img class="reward-mini-image" src="../assets/media/image-0043.webp" alt="Награда от гендиректора 1">
+              </button>
+              <button class="reward-mini-slot" type="button" data-gallery="reward-ceo" data-full="../assets/media/image-0044.webp" data-alt="Награда от гендиректора 2">
+                <img class="reward-mini-image" src="../assets/media/image-0044.webp" alt="Награда от гендиректора 2">
+              </button>
+              <button class="reward-mini-slot" type="button" data-gallery="reward-ceo" data-full="../assets/media/image-0045.webp" data-alt="Награда от гендиректора 3">
+                <img class="reward-mini-image" src="../assets/media/image-0045.webp" alt="Награда от гендиректора 3">
+              </button>
+            </div>
+          </div>
+          <div class="reward-category">
+            <p class="reward-category-label">От руководителей</p>
+            <div class="reward-mini-grid">
+              <button class="reward-mini-slot" type="button" data-gallery="reward-managers" data-full="../assets/media/image-0046.webp" data-alt="Награда от руководителей 1">
+                <img class="reward-mini-image" src="../assets/media/image-0046.webp" alt="Награда от руководителей 1">
+              </button>
+              <button class="reward-mini-slot" type="button" data-gallery="reward-managers" data-full="../assets/media/image-0047.webp" data-alt="Награда от руководителей 2">
+                <img class="reward-mini-image" src="../assets/media/image-0047.webp" alt="Награда от руководителей 2">
+              </button>
+              <button class="reward-mini-slot" type="button" data-gallery="reward-managers" data-full="../assets/media/image-0048.webp" data-alt="Награда от руководителей 3">
+                <img class="reward-mini-image" src="../assets/media/image-0048.webp" alt="Награда от руководителей 3">
+              </button>
+            </div>
+          </div>
+          <div class="reward-category">
+            <p class="reward-category-label">Между сотрудниками</p>
+            <div class="reward-mini-grid">
+              <button class="reward-mini-slot" type="button" data-gallery="reward-peers" data-full="../assets/media/image-0049.webp" data-alt="Награда между сотрудниками 1">
+                <img class="reward-mini-image" src="../assets/media/image-0049.webp" alt="Награда между сотрудниками 1">
+              </button>
+              <button class="reward-mini-slot" type="button" data-gallery="reward-peers" data-full="../assets/media/image-0050.webp" data-alt="Награда между сотрудниками 2">
+                <img class="reward-mini-image" src="../assets/media/image-0050.webp" alt="Награда между сотрудниками 2">
+              </button>
+              <button class="reward-mini-slot" type="button" data-gallery="reward-peers" data-full="../assets/media/image-0051.webp" data-alt="Награда между сотрудниками 3">
+                <img class="reward-mini-image" src="../assets/media/image-0051.webp" alt="Награда между сотрудниками 3">
+              </button>
+            </div>
+          </div>
+          <div class="reward-category">
+            <p class="reward-category-label">Особые, отрицательные, сезонные</p>
+            <div class="reward-mini-grid">
+              <button class="reward-mini-slot" type="button" data-gallery="reward-special" data-full="../assets/media/image-0052.webp" data-alt="Особая награда 1">
+                <img class="reward-mini-image" src="../assets/media/image-0052.webp" alt="Особая награда 1">
+              </button>
+              <button class="reward-mini-slot" type="button" data-gallery="reward-special" data-full="../assets/media/image-0053.webp" data-alt="Особая награда 2">
+                <img class="reward-mini-image" src="../assets/media/image-0053.webp" alt="Особая награда 2">
+              </button>
+              <button class="reward-mini-slot" type="button" data-gallery="reward-special" data-full="../assets/media/image-0054.webp" data-alt="Особая награда 3">
+                <img class="reward-mini-image" src="../assets/media/image-0054.webp" alt="Особая награда 3">
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block" id="avatars">
+      <div class="section-head">
+        <div class="section-kicker">Аватарки</div>
+        <div>
+            <h3>Аватарки для Телеграма</h3>
+          <p>Серия анимированных аватарок для Телеграма под рабочие статусы: отпуск, больничный, day off.</p>
+        </div>
+      </div>
+      <div class="avatar-grid">
+        <div class="avatar-card">
+          <button class="avatar-trigger" type="button" data-gallery="avatars" data-full="../assets/media/image-0055.webp" data-alt="Аватарка для Telegram 4">
+            <img class="avatar-image" src="../assets/media/image-0055.webp" alt="Аватарка для Telegram 4">
+          </button>
+        </div>
+        <div class="avatar-card">
+          <button class="avatar-trigger" type="button" data-gallery="avatars" data-full="../assets/media/image-0056.webp" data-alt="Аватарка для Telegram 5">
+            <img class="avatar-image" src="../assets/media/image-0056.webp" alt="Аватарка для Telegram 5">
+          </button>
+        </div>
+        <div class="avatar-card">
+          <button class="avatar-trigger" type="button" data-gallery="avatars" data-full="../assets/media/image-0057.webp" data-alt="Аватарка для Telegram 6">
+            <img class="avatar-image" src="../assets/media/image-0057.webp" alt="Аватарка для Telegram 6">
+          </button>
+        </div>
+      </div>
+    </section>
+    <div class="project-switcher-wrap">
+      <nav class="project-switcher" id="projectSwitcher" aria-label="Переход между проектами"></nav>
+    </div>
+  </main>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox-backdrop" data-close-lightbox></div>
+    <button class="lightbox-control lightbox-close" type="button" aria-label="Закрыть" data-close-lightbox>&times;</button>
+    <div class="lightbox-frame" id="lightboxFrame">
+      <button class="lightbox-control lightbox-prev" type="button" aria-label="Предыдущий баннер" id="lightboxPrev">&#8249;</button>
+      <img class="lightbox-media" id="lightboxMedia" src="" alt="">
+      <button class="lightbox-control lightbox-next" type="button" aria-label="Следующий баннер" id="lightboxNext">&#8250;</button>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const triggers = Array.from(document.querySelectorAll(".platform-banner-trigger, .message-trigger, .campaign-media-trigger, .avatar-trigger"));
+      const lightbox = document.getElementById("lightbox");
+      const lightboxFrame = document.getElementById("lightboxFrame");
+      const media = document.getElementById("lightboxMedia");
+      const prevButton = document.getElementById("lightboxPrev");
+      const nextButton = document.getElementById("lightboxNext");
+      const galleries = {};
+      let currentGallery = [];
+      let currentIndex = 0;
+
+      triggers.forEach((trigger) => {
+        const galleryName = trigger.dataset.gallery || "default";
+        if (!galleries[galleryName]) galleries[galleryName] = [];
+        galleries[galleryName].push(trigger);
+      });
+
+      const render = (index) => {
+        currentIndex = (index + currentGallery.length) % currentGallery.length;
+        const trigger = currentGallery[currentIndex];
+        const mediaSource = trigger.dataset.full || "";
+        const normalizedSource = mediaSource.split("?")[0].toLowerCase();
+        media.src = mediaSource;
+        media.alt = trigger.dataset.alt || "";
+        media.classList.toggle(
+          "is-transparent-media",
+          normalizedSource.endsWith(".png") || normalizedSource.endsWith(".gif")
+        );
+        const singleItem = currentGallery.length <= 1;
+        prevButton.style.display = singleItem ? "none" : "";
+        nextButton.style.display = singleItem ? "none" : "";
+      };
+
+      const openLightbox = (galleryName, index) => {
+        currentGallery = galleries[galleryName] || [];
+        if (!currentGallery.length) return;
+        render(index);
+        lightbox.classList.add("is-open");
+        lightbox.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      };
+
+      const closeLightbox = () => {
+        lightbox.classList.remove("is-open");
+        lightbox.setAttribute("aria-hidden", "true");
+        media.src = "";
+        media.alt = "";
+        media.classList.remove("is-transparent-media");
+        document.body.style.overflow = "";
+      };
+
+      triggers.forEach((trigger, index) => {
+        const galleryName = trigger.dataset.gallery || "default";
+        const gallery = galleries[galleryName] || [];
+        const galleryIndex = gallery.indexOf(trigger);
+        trigger.addEventListener("click", () => openLightbox(galleryName, galleryIndex));
+      });
+
+      prevButton.addEventListener("click", () => render(currentIndex - 1));
+      nextButton.addEventListener("click", () => render(currentIndex + 1));
+
+      lightbox.querySelectorAll("[data-close-lightbox]").forEach((node) => {
+        node.addEventListener("click", closeLightbox);
+      });
+
+      lightbox.addEventListener("click", (event) => {
+        if (event.target === lightbox || event.target === lightboxFrame) {
+          closeLightbox();
+        }
+      });
+
+      window.addEventListener("keydown", (event) => {
+        if (!lightbox.classList.contains("is-open")) return;
+        if (event.key === "Escape") closeLightbox();
+        if (event.key === "ArrowLeft") render(currentIndex - 1);
+        if (event.key === "ArrowRight") render(currentIndex + 1);
+      });
+    })();
+  </script>
+
+  <button class="floating-back" id="floatingBackButton" type="button" aria-label="Назад">&#8592;</button>
+  <button class="scroll-top" id="scrollTopButton" type="button" aria-label="??????">&#8593;</button>
+  <script>
+    (() => {
+      const button = document.getElementById("scrollTopButton");
+      const backButton = document.getElementById("floatingBackButton");
+      if (!button) return;
+
+      const toggleButton = () => {
+        const isVisible = window.scrollY > 320;
+        button.classList.toggle("visible", isVisible);
+        if (backButton) backButton.classList.toggle("visible", isVisible);
+      };
+
+      window.addEventListener("scroll", toggleButton, { passive: true });
+      toggleButton();
+
+      button.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      if (backButton) {
+        backButton.addEventListener("click", () => {
+          window.location.href = "../index.html";
+        });
+      }
+    })();
+  </script>
+
+  <script>
+    (() => {
+      const pageNavLinks = Array.from(document.querySelectorAll('.page-nav a[href^="#"]'));
+      if (!pageNavLinks.length) return;
+
+      const cleanUrl = window.location.pathname + window.location.search;
+
+      pageNavLinks.forEach((link) => {
+        const targetSelector = link.getAttribute('href');
+        if (!targetSelector || targetSelector === '#') return;
+
+        link.dataset.target = targetSelector;
+        link.setAttribute('href', cleanUrl);
+
+        link.addEventListener('click', (event) => {
+          const target = document.querySelector(link.dataset.target);
+          if (!target) return;
+
+          event.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+          if (window.history && typeof window.history.replaceState === 'function') {
+            window.history.replaceState(window.history.state, '', cleanUrl);
+          }
+        });
+      });
+    })();
+  </script>
+
+  <script>
+    (() => {
+      const projects = [
+        { file: "project-01.html", title: "Внешние коммуникации" },
+        { file: "project-02.html", title: "Внутренние коммуникации" },
+        { file: "project-03.html", title: "Бренд- и спецпроекты" },
+        { file: "project-04.html", title: "Полиграфия" },
+        { file: "project-07.html", title: "Lashes Beauty" },
+        { file: "project-05.html", title: "Щёлочь" },
+        { file: "project-06.html", title: "Любовь эмигранта" }
+      ];
+      const switcher = document.getElementById("projectSwitcher");
+      if (!switcher) return;
+      const currentFile = window.location.pathname.split("/").pop();
+      const currentIndex = projects.findIndex((project) => project.file === currentFile);
+      if (currentIndex === -1) return;
+      const prevProject = projects[(currentIndex - 1 + projects.length) % projects.length];
+      const nextProject = projects[(currentIndex + 1) % projects.length];
+      switcher.innerHTML = `
+        <a class="project-switcher-link" href="${prevProject.file}">
+          <span class="project-switcher-label">Предыдущий проект</span>
+          <span class="project-switcher-title">${prevProject.title}</span>
+        </a>
+        <a class="project-switcher-link" href="${nextProject.file}">
+          <span class="project-switcher-label">Следующий проект</span>
+          <span class="project-switcher-title">${nextProject.title}</span>
+        </a>
+      `;
+    })();
+  </script>
+
+  <script>
+    (() => {
+      const revealPage = () => document.documentElement.classList.remove("fonts-loading");
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(revealPage).catch(revealPage);
+      } else {
+        revealPage();
+      }
+    })();
+  </script>
+</body>
+</html>
