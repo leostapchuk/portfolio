@@ -300,6 +300,20 @@
       text-wrap: pretty;
     }
 
+    .entry-subtitle a {
+      color: inherit;
+      text-decoration-line: underline;
+      text-decoration-color: rgba(185, 185, 185, 0.72);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.18em;
+      transition: color 0.2s ease, text-decoration-color 0.2s ease;
+    }
+
+    .entry-subtitle a:hover {
+      color: var(--text);
+      text-decoration-color: rgba(255, 255, 255, 0.86);
+    }
+
     .entry-date {
       color: var(--muted);
       font-size: 13px;
@@ -586,7 +600,7 @@
           <div class="entry-head">
             <div>
               <div class="entry-title">Графический дизайнер: от junior до middle</div>
-              <div class="entry-subtitle">Эквио · HR-Tech платформа для обучения и мотивации персонала</div>
+              <div class="entry-subtitle"><a href="https://e-queo.com/" target="_blank" rel="noopener noreferrer">Эквио</a> · HR-Tech платформа для обучения и мотивации персонала</div>
             </div>
             <div class="entry-date">апрель 2024 — апрель 2026</div>
           </div>
