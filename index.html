@@ -427,6 +427,20 @@
       text-wrap: pretty;
     }
 
+    .project-description a {
+      color: inherit;
+      text-decoration-line: underline;
+      text-decoration-color: rgba(185, 185, 185, 0.72);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.18em;
+      transition: color 0.2s ease, text-decoration-color 0.2s ease;
+    }
+
+    .project-description a:hover {
+      color: var(--text);
+      text-decoration-color: rgba(255, 255, 255, 0.86);
+    }
+
     .bullet-list li,
     .section-label,
     .tag {
@@ -669,15 +683,15 @@
             </div>
           </a>
 
-          <a class="project-link link" href="projects/project-05.html">
+          <div class="project-link link" role="link" tabindex="0" data-href="projects/project-05.html">
             <div>
               <div class="project-head">
-                <div class="project-title"><span class="project-name">Щелочь</span></div>
+                <div class="project-title"><span class="project-name">Щёлочь</span></div>
                 <div class="project-date">август 2024 — август 2025</div>
               </div>
-              <div class="project-description">Автор в телеграм-сообществе «ГРАФДИЗЩ®»: контент о спортивном дизайне и работа с визуальной подачей.</div>
+              <div class="project-description">Автор в телеграм-сообществе <a href="https://t.me/alkali_design" target="_blank" rel="noopener noreferrer">«ГРАФДИЗЩ®»</a>: контент о спортивном дизайне и работа с визуальной подачей.</div>
             </div>
-          </a>
+          </div>
 
           <a class="project-link link" href="projects/project-06.html">
             <div>
@@ -760,9 +774,27 @@
       }
 
       links.forEach((link) => {
-        link.addEventListener("click", () => {
+        const rememberPosition = () => {
           sessionStorage.setItem(storageKey, String(window.scrollY));
           sessionStorage.setItem(returnKey, "1");
+        };
+
+        link.addEventListener("click", (event) => {
+          if (event.target.closest("a")) return;
+          rememberPosition();
+          const href = link.dataset.href;
+          if (href) {
+            window.location.href = href;
+          }
+        });
+
+        link.addEventListener("keydown", (event) => {
+          if (event.key !== "Enter" && event.key !== " ") return;
+          const href = link.dataset.href;
+          if (!href) return;
+          event.preventDefault();
+          rememberPosition();
+          window.location.href = href;
         });
       });
 
