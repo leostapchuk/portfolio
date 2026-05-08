@@ -702,7 +702,7 @@
                 <div class="project-title"><span class="project-name">Щёлочь</span></div>
                 <div class="project-date">август 2024 — август 2025</div>
               </div>
-              <div class="project-description">Автор в телеграм-сообществе <a href="https://t.me/alkali_design" target="_blank" rel="noopener noreferrer">«ГРАФДРЗЩ®»</a>: контент о спортивном дизайне и работа с визуальной подачей.</div>
+              <div class="project-description">Автор в телеграм-сообществе <a href="https://t.me/alkali_design" target="_blank" rel="noopener noreferrer">«ГРАФДИЗЩ®»</a>: контент о спортивном дизайне и работа с визуальной подачей.</div>
             </div>
           </div>
 
@@ -731,7 +731,7 @@
           <span class="tag">Визуальные коммуникации</span>
           <span class="tag">Коммуникационный дизайн</span>
           <span class="tag">Дизайн соцсетей</span>
-          <span class="tag">Рллюстрация</span>
+          <span class="tag">Иллюстрация</span>
           <span class="tag">Брендинг</span>
           <span class="tag">Полиграфия</span>
           <span class="tag">Генеративные инструменты</span>
@@ -780,23 +780,16 @@
     (() => {
       const storageKey = "portfolio:index-scroll-y";
       const returnKey = "portfolio:index-return";
-      const projectKey = "portfolio:index-project-href";
       const links = Array.from(document.querySelectorAll(".project-link"));
 
       if ("scrollRestoration" in history) {
         history.scrollRestoration = "manual";
       }
 
-      const getProjectHref = (link) => link.getAttribute("href") || link.dataset.href || "";
-
       links.forEach((link) => {
         const rememberPosition = () => {
-          const href = getProjectHref(link);
           sessionStorage.setItem(storageKey, String(window.scrollY));
           sessionStorage.setItem(returnKey, "1");
-          if (href) {
-            sessionStorage.setItem(projectKey, href);
-          }
         };
 
         link.addEventListener("click", (event) => {
@@ -819,34 +812,16 @@
       });
 
       const savedScroll = sessionStorage.getItem(storageKey);
-      const savedProjectHref = sessionStorage.getItem(projectKey);
-      const shouldRestore = sessionStorage.getItem(returnKey) === "1";
+      const shouldRestore = sessionStorage.getItem(returnKey) === "1" && savedScroll;
 
       if (shouldRestore) {
         const scrollY = Number(savedScroll);
-        const target = savedProjectHref
-          ? document.querySelector(`.project-link[href="${CSS.escape(savedProjectHref)}"], .project-link[data-href="${CSS.escape(savedProjectHref)}"]`)
-          : null;
-        const restoreScroll = () => {
-          if (!Number.isNaN(scrollY)) {
-            window.scrollTo(0, scrollY);
-            return;
-          }
-          if (target) {
-            target.scrollIntoView({ block: "center" });
-          }
-        };
-
-        requestAnimationFrame(() => {
-          restoreScroll();
-          setTimeout(restoreScroll, 60);
-          setTimeout(restoreScroll, 180);
-          setTimeout(restoreScroll, 420);
-        });
-
-        window.addEventListener("load", restoreScroll, { once: true });
-        if (document.fonts && document.fonts.ready) {
-          document.fonts.ready.then(restoreScroll).catch(() => {});
+        if (!Number.isNaN(scrollY)) {
+          const restoreScroll = () => window.scrollTo(0, scrollY);
+          requestAnimationFrame(() => {
+            restoreScroll();
+            setTimeout(restoreScroll, 60);
+          });
         }
 
         sessionStorage.removeItem(returnKey);

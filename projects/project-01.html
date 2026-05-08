@@ -809,9 +809,9 @@
   </main>
 
   <div class="lightbox" id="lightbox" aria-hidden="true">
-    <button class="lightbox-close" id="lightbox-close" aria-label="Закрыть">Г—</button>
+    <button class="lightbox-close" id="lightbox-close" aria-label="Закрыть">×</button>
     <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Предыдущее изображение">‹</button>
-    <img class="lightbox-image" id="lightbox-image" src="" alt="Рзображение проекта в полном размере">
+    <img class="lightbox-image" id="lightbox-image" src="" alt="Изображение проекта в полном размере">
     <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Следующее изображение">›</button>
     <div class="lightbox-counter" id="lightbox-counter"></div>
   </div>
@@ -995,21 +995,6 @@
       } else {
         revealPage();
       }
-    })();
-  </script>
-  <script>
-    (() => {
-      const markIndexReturn = () => {
-        sessionStorage.setItem("portfolio:index-return", "1");
-        const fileName = window.location.pathname.split("/").pop();
-        if (fileName) {
-          sessionStorage.setItem("portfolio:index-project-href", `projects/${fileName}`);
-        }
-      };
-
-      document.querySelectorAll(".back, #floatingBackButton").forEach((link) => {
-        link.addEventListener("click", markIndexReturn, { capture: true });
-      });
     })();
   </script>
 </body>

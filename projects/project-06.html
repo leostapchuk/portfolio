@@ -807,20 +807,5 @@
       }
     })();
   </script>
-  <script>
-    (() => {
-      const markIndexReturn = () => {
-        sessionStorage.setItem("portfolio:index-return", "1");
-        const fileName = window.location.pathname.split("/").pop();
-        if (fileName) {
-          sessionStorage.setItem("portfolio:index-project-href", `projects/${fileName}`);
-        }
-      };
-
-      document.querySelectorAll(".back, #floatingBackButton").forEach((link) => {
-        link.addEventListener("click", markIndexReturn, { capture: true });
-      });
-    })();
-  </script>
 </body>
 </html>
