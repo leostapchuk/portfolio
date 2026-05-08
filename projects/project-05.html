@@ -638,7 +638,7 @@
     <h1>Щёлочь</h1>
     <div class="intro-grid" id="about">
       <div>
-        <p class="subtitle">Создание контента для телеграм-сообщества «ГРАФДИЗЩ®»: одиночные посты и серии на тему спортивного дизайна с акцентом на визуальную подачу. Участие в командных форматах и конкурсах.</p>
+        <p class="subtitle">Создание контента для телеграм-сообщества «ГРАФДРЗЩ®»: одиночные посты и серии на тему спортивного дизайна с акцентом на визуальную подачу. Участие в командных форматах и конкурсах.</p>
       </div>
     </div>
 
@@ -659,7 +659,7 @@
               <div class="post-channel-avatar" aria-hidden="true">
                 <img src="../assets/media/image-0086.webp" alt="">
               </div>
-              <div class="post-channel-name">ГРАФДИЗЩ®</div>
+              <div class="post-channel-name">ГРАФДРЗЩ®</div>
             </a>
           </div>
           <div class="post-media">
@@ -694,7 +694,7 @@
               <div class="post-channel-avatar" aria-hidden="true">
                 <img src="../assets/media/image-0086.webp" alt="">
               </div>
-              <div class="post-channel-name">ГРАФДИЗЩ®</div>
+              <div class="post-channel-name">ГРАФДРЗЩ®</div>
             </a>
           </div>
           <div class="post-media">
@@ -738,7 +738,7 @@
               <div class="post-channel-avatar" aria-hidden="true">
                 <img src="../assets/media/image-0086.webp" alt="">
               </div>
-              <div class="post-channel-name">ГРАФДИЗЩ®</div>
+              <div class="post-channel-name">ГРАФДРЗЩ®</div>
             </a>
           </div>
           <div class="post-media">
@@ -786,7 +786,7 @@
         <div class="section-kicker">Командный формат</div>
         <div class="section-copy">
           <h2>Валентинка</h2>
-          <p>Командная инициатива авторов сообщества «ГРАФДИЗЩ®», в которой каждый участник создавал <a href="https://t.me/alkali_design/5474" target="_blank" rel="noopener noreferrer">свою индивидуальную валентинку</a>. Мой вариант — ностальгическая вырезалка со Шреком.</p>
+          <p>Командная инициатива авторов сообщества «ГРАФДРЗЩ®», в которой каждый участник создавал <a href="https://t.me/alkali_design/5474" target="_blank" rel="noopener noreferrer">свою индивидуальную валентинку</a>. Мой вариант — ностальгическая вырезалка со Шреком.</p>
         </div>
       </div>
       <div class="wide-gallery longread-stack">
@@ -1075,6 +1075,21 @@
       } else {
         revealPage();
       }
+    })();
+  </script>
+  <script>
+    (() => {
+      const markIndexReturn = () => {
+        sessionStorage.setItem("portfolio:index-return", "1");
+        const fileName = window.location.pathname.split("/").pop();
+        if (fileName) {
+          sessionStorage.setItem("portfolio:index-project-href", `projects/${fileName}`);
+        }
+      };
+
+      document.querySelectorAll(".back, #floatingBackButton").forEach((link) => {
+        link.addEventListener("click", markIndexReturn, { capture: true });
+      });
     })();
   </script>
 </body>

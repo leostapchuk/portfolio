@@ -557,7 +557,7 @@
         <div class="section-kicker">Полиграфия</div>
         <div>
           <h3>Буклет</h3>
-          <p>Информационный буклет для клиентов к оффлайн-мероприятию.</p>
+          <p>Рнформационный буклет для клиентов к оффлайн-мероприятию.</p>
         </div>
       </div>
       <div class="grid-brochure">
@@ -788,6 +788,21 @@
       } else {
         revealPage();
       }
+    })();
+  </script>
+  <script>
+    (() => {
+      const markIndexReturn = () => {
+        sessionStorage.setItem("portfolio:index-return", "1");
+        const fileName = window.location.pathname.split("/").pop();
+        if (fileName) {
+          sessionStorage.setItem("portfolio:index-project-href", `projects/${fileName}`);
+        }
+      };
+
+      document.querySelectorAll(".back, #floatingBackButton").forEach((link) => {
+        link.addEventListener("click", markIndexReturn, { capture: true });
+      });
     })();
   </script>
 </body>

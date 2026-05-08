@@ -771,19 +771,19 @@
         <div class="mascot-showcase">
           <div class="mascot-option">
             <div class="mascot-card"><button class="merch-trigger" type="button" data-gallery="mascot" data-full="../assets/media/image-0077.webp" data-alt="Маскот 1"><img class="merch-image" src="../assets/media/image-0077.webp" alt="Маскот 1"></button></div>
-            <p class="mascot-caption">Идея: передать живую эмоцию, харизму, ум и сноровку через образ запоминающегося животного.</p>
+            <p class="mascot-caption">Рдея: передать живую эмоцию, харизму, ум и сноровку через образ запоминающегося животного.</p>
           </div>
           <div class="mascot-option">
             <div class="mascot-card"><button class="merch-trigger" type="button" data-gallery="mascot" data-full="../assets/media/image-0078.webp" data-alt="Маскот 2"><img class="merch-image" src="../assets/media/image-0078.webp" alt="Маскот 2"></button></div>
-            <p class="mascot-caption">Идея: мета-существо, живая экосистема, в которой все взаимосвязано, поддерживает друг друга и развивается.</p>
+            <p class="mascot-caption">Рдея: мета-существо, живая экосистема, в которой все взаимосвязано, поддерживает друг друга и развивается.</p>
           </div>
           <div class="mascot-option">
             <div class="mascot-card"><button class="merch-trigger" type="button" data-gallery="mascot" data-full="../assets/media/image-0079.webp" data-alt="Маскот 4"><img class="merch-image" src="../assets/media/image-0079.webp" alt="Маскот 4"></button></div>
-            <p class="mascot-caption">Идея: цифровой образ Эквио, символ развития и поддержки: помогает учиться, расти и двигаться вперед вместе с платформой.</p>
+            <p class="mascot-caption">Рдея: цифровой образ Эквио, символ развития и поддержки: помогает учиться, расти и двигаться вперед вместе с платформой.</p>
           </div>
           <div class="mascot-option">
             <div class="mascot-card"><button class="merch-trigger" type="button" data-gallery="mascot" data-full="../assets/media/image-0080.webp" data-alt="Маскот 3"><img class="merch-image" src="../assets/media/image-0080.webp" alt="Маскот 3"></button></div>
-            <p class="mascot-caption">Идея: маленький и технологичный персонаж, который символизирует энергию и смекалку: помогает находить решения, соединять процессы и делать работу команды проще.</p>
+            <p class="mascot-caption">Рдея: маленький и технологичный персонаж, который символизирует энергию и смекалку: помогает находить решения, соединять процессы и делать работу команды проще.</p>
           </div>
         </div>
       </section>
@@ -973,6 +973,21 @@
       } else {
         revealPage();
       }
+    })();
+  </script>
+  <script>
+    (() => {
+      const markIndexReturn = () => {
+        sessionStorage.setItem("portfolio:index-return", "1");
+        const fileName = window.location.pathname.split("/").pop();
+        if (fileName) {
+          sessionStorage.setItem("portfolio:index-project-href", `projects/${fileName}`);
+        }
+      };
+
+      document.querySelectorAll(".back, #floatingBackButton").forEach((link) => {
+        link.addEventListener("click", markIndexReturn, { capture: true });
+      });
     })();
   </script>
 </body>

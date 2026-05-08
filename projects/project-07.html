@@ -664,7 +664,7 @@
       <section class="wide-section" id="before">
         <div class="label">До ребрендинга</div>
         <div class="wide-content">
-          <p>У бренда не было цельной визуальной системы: отсутствовали брендбук, единые правила по цвету, типографике и стилю, а также типовые примеры использования айдентики. Из-за этого коммуникационные материалы получались разрозненными, а постановка задач дизайнерам усложнялась. Задачей ребрендинга было собрать целостную систему бренда и зафиксировать ее в брендбуке.</p>
+          <p>У бренда не было цельной визуальной системы: отсутствовали брендбук, единые правила по цвету, типографике и стилю, а также типовые примеры использования айдентики. Рз-за этого коммуникационные материалы получались разрозненными, а постановка задач дизайнерам усложнялась. Задачей ребрендинга было собрать целостную систему бренда и зафиксировать ее в брендбуке.</p>
         </div>
         <div class="wide-gallery">
           <div class="before-grid">
@@ -1024,6 +1024,21 @@
       } else {
         revealPage();
       }
+    })();
+  </script>
+  <script>
+    (() => {
+      const markIndexReturn = () => {
+        sessionStorage.setItem("portfolio:index-return", "1");
+        const fileName = window.location.pathname.split("/").pop();
+        if (fileName) {
+          sessionStorage.setItem("portfolio:index-project-href", `projects/${fileName}`);
+        }
+      };
+
+      document.querySelectorAll(".back, #floatingBackButton").forEach((link) => {
+        link.addEventListener("click", markIndexReturn, { capture: true });
+      });
     })();
   </script>
 </body>
