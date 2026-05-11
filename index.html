@@ -793,7 +793,8 @@
         };
 
         link.addEventListener("click", (event) => {
-          if (event.target.closest("a")) return;
+          const nestedLink = event.target.closest("a");
+          if (nestedLink && nestedLink !== link) return;
           rememberPosition();
           const href = link.dataset.href;
           if (href) {
